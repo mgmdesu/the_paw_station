@@ -1,0 +1,33 @@
+<table class="user_info_table">
+  <tr>
+    <%= image_tag user.get_profile_image, size:'50x50' %> 
+    <%= user.name %>
+    <%= link_to edit_users_path do %>
+      <i class="fas fa-user-pen"></i>
+    <% end %>
+  </tr>
+  <tr>
+    <td>都道府県</td>
+  </tr>
+  <tr>
+    <td>
+      <%= user.introduction %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      フォロー（）
+      フォロワー（）
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% if current_user == user %>
+        <%= link_to "Mypage", users_path, class: "btn-block text-center" %>
+      <% end %>
+    </td>
+    <td><%#= link_to "Bookmarks", bookmarks_walks_path, class: "btn-block text-center" %></td>
+    <td><%#= link_to "Favorites", , class: "btn-block text-center" %></td>
+  </tr>
+  
+</table>
