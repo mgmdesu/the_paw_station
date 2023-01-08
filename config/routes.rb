@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   #ユーザー側
   scope module: :public do
-    get '/' => 'homes#top'
+    root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     
     resource :users, only: [:show, :edit, :update] do

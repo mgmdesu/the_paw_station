@@ -42,7 +42,12 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  validates :name, presence: true
-  validates :is_deleted, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  
+  #退会済みのユーザーが同アカウントでログイン不可の制約
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end 
   
 end
