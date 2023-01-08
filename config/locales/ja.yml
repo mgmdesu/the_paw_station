@@ -1,0 +1,13 @@
+ja:
+  enums:
+    walk:
+      facility:
+        outdoor: "屋外"
+        indoor: "屋内"
+        both: "屋外&屋内"
+        
+      size:
+        small_dog: "小型犬"
+        medium_size_dog: "中型犬"
+        large_size_dog: "大型犬"
+        
