@@ -4,6 +4,12 @@ class PostDog < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  has_one_attached :post_dog_image
+  
+  def get_post_dog_image
+    (post_dog_image.attached?) ? post_dog_image: 'no_image.png'
+  end
+  
   #favorites存在有無のメソッド
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

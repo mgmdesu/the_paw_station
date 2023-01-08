@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_one_attached :profile_image
+  
+  def get_profile_image
+    (profile_image.attached?) ? profile_image: 'no_image.png'
+  end
 
   #散歩関連
   has_many :walks, dependent: :destroy

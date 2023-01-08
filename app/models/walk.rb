@@ -6,6 +6,11 @@ class Walk < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   
+  has_one_attached :walk_image
+  
+  def get_walk_image
+    (walk_image.attached?) ? walk_image: 'no_image.png'
+  end
   
   #book_mark存在有無のメソッド
   def bookmarked_by?(user)
