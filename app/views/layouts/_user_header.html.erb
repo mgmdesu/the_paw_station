@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Mypage', users_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Take a Walk', walks_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Meetup', groups_path, class: "btn btn-outline-secondary"%>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+  </li>
+<% else %>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'About', about_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Take a Walk', walks_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Meetup', groups_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Guest Log in', guest_sign_in_path, method: :post, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-secondary" %>
+  </li>
+  <li class="nav-item mr-3 text-nowrap">
+    <%= link_to 'Log in', new_user_session_path, class: "btn btn-outline-secondary" %>
+  </li>
+<% end %>

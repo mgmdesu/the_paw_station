@@ -1,6 +1,7 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
     <div class="container">
+      <p>The Paw Station</p>
       <!--<a class="navbar-brand p-3" href="/">ロゴ入れる</a>-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,48 +9,10 @@
       
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to 'Mypage', users_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Take a Walk', walks_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Meetup', groups_path, class: "btn btn-outline-secondary"%>
-            </li>
-            <li>
-              <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to 'Home', admin_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Users', admin_users_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-            </li>
+          <% if request.fullpath.include? "/admin" %>
+            <%= render 'layouts/admin_header' %>
           <% else %>
-            <li>
-              <%= link_to 'About', about_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Take a Walk', walks_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Meetup', groups_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Guest Log in', guest_sign_in_path, method: :post, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to 'Log in', new_user_session_path, class: "btn btn-outline-secondary" %>
-            </li>
+            <%= render 'layouts/user_header' %>
           <% end %>
         </ul>
       </div>
