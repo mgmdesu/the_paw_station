@@ -1,2 +1,13 @@
-<h1>Public::Walks#new</h1>
-<p>Find me in app/views/public/walks/new.html.erb</p>
+<div class="container mt-md-5">
+  <div class="row">
+    <div class='col-md-4'>
+      <!--ユーザー情報-->
+      <%= render 'public/users/info', user: @user %>
+    </div>
+    
+    <div class='col-md-7 offset-md-1'>
+      <h2>Post to Take a Walk</h2>
+        <%= render 'form', walk: @walk %>
+    </div>
+  </div>
+</div>

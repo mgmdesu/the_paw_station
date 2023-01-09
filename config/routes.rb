@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'unsubscribe'
       patch 'withdraw'
     end
-    
+  
     resources :walks do
       resources :walk_comments, only: [:create, :destroy]
       get :bookmarks, on: :collection

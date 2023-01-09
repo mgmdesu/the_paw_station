@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   def get_profile_image
-    (profile_image.attached?) ? profile_image: 'no_image.png'
+    (profile_image.attached?) ? profile_image: 'user_no_image.png'
   end
 
   #散歩関連
