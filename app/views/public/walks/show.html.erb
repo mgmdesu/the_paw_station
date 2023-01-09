@@ -27,6 +27,7 @@
             <%= link_to '削除', @walk, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %>
           <% end %>
         </div>
+      <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
     </div>
   </div>
 </div>

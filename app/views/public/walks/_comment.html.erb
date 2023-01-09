@@ -1,0 +1,34 @@
+<h2>Comment</h2>
+<p>コメント数：<%= walk.walk_comments.count %></p>
+<%= form_with model: [walk, walk_comment] do |f| %>
+  <table>
+    <tr><td><%= f.label :コメント %></td></tr>
+    <tr><td><%= f.text_area :walk_comment, placeholder: 'コメントを記入' %></td></tr>
+    <tr><td><%= f.submit 'コメント' %></td></tr>
+  </table>
+<% end %>
+
+
+<% walk.walk_comments.each do |walk_comment| %>
+  <table>
+    <tr>
+      <td>
+        <%= link_to users_path(walk_comment.user.id) do %>
+          <%= image_tag walk_comment.user.get_profile_image, size:'100x100' %>
+          <%= walk_comment.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if walk_comment.user == current_user %>
+          <%= link_to '削除', walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= walk_comment.walk_comment %></td>
+    </tr>
+    <tr>
+      <td><%= walk_comment.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+  </table>
+<% end %>
