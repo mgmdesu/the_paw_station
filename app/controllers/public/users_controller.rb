@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "登録情報を変更しました"
-      redirect_to users_path(current_user)
+      redirect_to users_path
     else
       flash[:alert] = "入力内容をお確かめください"
       render :edit
