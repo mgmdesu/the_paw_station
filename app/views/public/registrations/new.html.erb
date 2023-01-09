@@ -1,36 +1,35 @@
-<div class="container">
+<div class="container mt-5 px-sm-0">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>Sign up</h2>
-      
+    <div class="mx-auto">
+      <h4>The Paw Stationに会員登録</h4><br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
           
-          <div class="field">
-            <%= f.label :name %><br>
+          <div class="field mb-md-3">
+            <%= f.label :名前（表示させたい名前） %><br>
             <%= f.text_field :name %>
           </div>
         
-          <div class="field">
-            <%= f.label :email %><br />
+          <div class="field mb-md-3">
+            <%= f.label :メールアドレス %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
         
-          <div class="field">
-            <%= f.label :password %>
+          <div class="field mb-md-3">
+            <%= f.label :パスワード %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            (<%= @minimum_password_length %>文字以上)
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>
         
-          <div class="field">
-            <%= f.label :password_confirmation %><br />
+          <div class="field mb-md-3">
+            <%= f.label :パスワード確認用 %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
         
-          <div class="actions">
-            <%= f.submit "Sign up" %>
+          <div class="actions mb-md-3">
+            <%= f.submit "登録する", class: "btn btn-success" %>
           </div>
         <% end %>
         
