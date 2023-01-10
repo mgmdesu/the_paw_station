@@ -47,7 +47,7 @@ class Public::WalksController < ApplicationController
     @walk.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to walks_path
-  end 
+  end
   
   private
   

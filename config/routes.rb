@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
     resources :walks do
       resources :walk_comments, only: [:create, :destroy]
-      get :bookmarks, on: :collection
+      # get :bookmarks, on: :collection
       resource :bookmarks, only: [:index, :create, :destroy]
     end 
     
