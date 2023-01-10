@@ -1,2 +1,23 @@
-<h1>Public::PostDogs#edit</h1>
-<p>Find me in app/views/public/post_dogs/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <%= form_with model: @post_dog do |f| %>
+          <table>
+            <tbody>
+              <tr>
+                <td><%= f.label :本文 %></td>
+                <td><%= f.text_area :body, autofocus: true %></td>
+              </tr>
+              <tr></tr>
+                <td><%= f.label :画像 %></td>
+                <td><%= f.file_field :post_dog_image, accept: 'image/*' %></td>
+              </tr>
+              <tr>
+                <td><%= f.submit '編集', class: "btn btn-success" %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+    </div>
+  </div>
+</div>

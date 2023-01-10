@@ -20,10 +20,29 @@ class Public::PostDogsController < ApplicationController
   end
 
   def show
+    @post_dog = PostDog.find(params[:id])
   end
 
   def edit
+    @post_dog = PostDog.find(params[:id])
   end
+  
+  def update
+    @post_dog = PostDog.find(params[:id])
+    if @post_dog.update(post_dog_params)
+      flash[:notice] = "内容を編集しました"
+      redirect_to post_dog_path(@post_dog.id)
+    else
+      render :edit
+    end 
+  end
+  
+  def destroy
+    @post_dog = PostDog.find(params[:id])
+    @post_dog.destroy
+    flash[:alert] = "投稿を削除しました"
+    redirect_to post_dogs_path
+  end 
   
   private
   
