@@ -2,6 +2,10 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Post dog Details</h2>
+      
+        <!--いいねボタン-->
+        <%= render 'favorite', post_dog: @post_dog %>
+        
         <div><%= image_tag @post_dog.get_post_dog_image, size:'300x200' %></div>
         <div>
           <%= link_to users_path(@post_dog.user.id) do %>
