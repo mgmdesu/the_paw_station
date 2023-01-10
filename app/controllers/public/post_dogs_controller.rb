@@ -16,6 +16,7 @@ class Public::PostDogsController < ApplicationController
   end 
 
   def index
+    @post_dogs = PostDog.all
   end
 
   def show
