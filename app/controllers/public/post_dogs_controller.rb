@@ -8,7 +8,7 @@ class Public::PostDogsController < ApplicationController
     @post_dog = PostDog.new(post_dog_params)
     @post_dog.user_id = current_user.id
     if @post_dog.save
-      flash[:notice] = " 投稿されました"
+      flash[:notice] = "投稿されました"
       redirect_to post_dog_path(@post_dog.id)
     else
       render :new
@@ -21,6 +21,7 @@ class Public::PostDogsController < ApplicationController
 
   def show
     @post_dog = PostDog.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit

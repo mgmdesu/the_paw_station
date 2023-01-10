@@ -1,0 +1,35 @@
+<h2>Comment</h2>
+<p>コメント数：<%= post_dog.post_comments.count %></p>
+<%= form_with model: [post_dog, post_comment] do |f| %>
+  <table>
+    <tbody>
+      <tbody>
+        <tr><td><%= f.label :コメント %></td></tr>
+        <tr><td><%= f.text_area :dog_comment, placeholder: 'コメントはここに' %></td></tr>
+        <tr><td><%= f.submit 'コメント' %></td></tr>
+      </tbody>
+    </tbody>
+  </table>
+<% end %>
+
+<% post_dog.post_comments.each do |post_comment| %>
+  <table>
+    <tr>
+      <td>
+        <%= link_to users_path(post_comment.user.id) do %>
+          <%= image_tag post_comment.user.get_profile_image, size:'80x80' %>
+          <%= post_comment.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if post_comment.user == current_user %>
+          <%= link_to '削除', post_dog_post_comment_path(post_comment.post_dog, post_comment), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= post_comment.dog_comment %></td>
+      <td><%= post_comment.created_at.strftime('%Y/%m') %></td>
+    </tr>
+  </table>
+<% end %>

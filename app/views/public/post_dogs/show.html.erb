@@ -17,6 +17,11 @@
             <%= link_to '削除', @post_dog, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %>
           <% end %>
         </div>
+        
+        <div>
+          <%= render 'comment', post_dog: @post_dog, post_comment: @post_comment %>
+        </div>
+        
         <div><%= link_to '一覧へ戻る', post_dogs_path, class: "btn btn-primary" %> </div>
     </div>
   </div>
