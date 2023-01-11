@@ -2,7 +2,7 @@ class Public::WalksController < ApplicationController
   
   def new
     @walk = Walk.new
-    @user = current_user
+    @tags = Tag.all
   end
   
   def create
@@ -18,18 +18,15 @@ class Public::WalksController < ApplicationController
 
   def index
     @walks = Walk.all
-    @user = current_user
   end
 
   def show
     @walk = Walk.find(params[:id])
-    @user = @walk.user
     @walk_comment = WalkComment.new
   end
 
   def edit
     @walk = Walk.find(params[:id])
-    @user = current_user
   end
   
   def update
@@ -52,7 +49,7 @@ class Public::WalksController < ApplicationController
   private
   
   def walk_params
-    params.require(:walk).permit(:title, :opinion, :dogrun_name, :facility, :size, :walk_image)
+    params.require(:walk).permit(:title, :opinion, :dogrun_name, :facility, :size, :walk_image, :tag_id)
   end 
   
 end
