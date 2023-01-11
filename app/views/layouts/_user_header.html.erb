@@ -34,3 +34,11 @@
     <%= link_to 'Log in', new_user_session_path, class: "btn btn-outline-secondary" %>
   </li>
 <% end %>
+
+<!--検索フォーム-->
+<%= form_with url: search_path, locul: true, method: :get, class: "d-flex border border-secondary rounded" do |f| %>
+  <%= f.text_field :word, class: "form-control", placeholder: "Search", style: "width: 100%; border: none;" %>
+  <%= button_tag class: "", type: "submit", style: "border: none;" do %>
+  <i class="fas fa-search"></i>
+  <% end %>
+<% end %>

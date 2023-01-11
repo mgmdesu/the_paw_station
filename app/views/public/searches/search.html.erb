@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>”<%= @word %>”の検索結果（<%= @walks.count %>件）</h2>
+        <table>
+          <% @walks.each do |walk| %>
+          <tr>
+            <td><%= image_tag walk.get_walk_image, size:'100x100' %></td>
+            <td><%= walk.title %></td>
+            <td><%= walk.opinion %></td>
+            <td><%= walk.dogrun_name %></td>
+            <td><%= link_to '詳しく見る', walk_path(walk) %></td>
+          </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>

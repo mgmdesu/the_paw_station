@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     
     resources :groups, except: [:destroy]
     
-    get 'search' => 'searches#search'
+    get '/search' => 'searches#search'
   end
   
   #管理者側
