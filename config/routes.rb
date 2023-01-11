@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   
     resources :walks do
       resources :walk_comments, only: [:create, :destroy]
-      # get :bookmarks, on: :collection
       resource :bookmarks, only: [:index, :create, :destroy]
     end 
     
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:index, :create, :destroy]
     end 
     
-    resources :groups
+    resources :groups, except: [:destroy]
     
     get 'search' => 'searches#search'
   end
