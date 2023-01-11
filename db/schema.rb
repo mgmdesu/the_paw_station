@@ -99,13 +99,6 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "walk_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "followe_id", null: false
     t.integer "followed_id", null: false
@@ -149,6 +142,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
     t.string "dogrun_name"
     t.integer "facility", default: 0, null: false
     t.integer "size", default: 0, null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

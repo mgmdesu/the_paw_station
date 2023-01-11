@@ -3,12 +3,9 @@
     <div class="col-md-12">
       <h2>Take a Walk Information</h2>
       <div><%= link_to 'NEW POST', new_walk_path, class: "btn btn-outline-secondary" %></div>
-        <!--都道府県表示-->
-        
         <% @walks.each do |walk| %>
-        <div>
-          <%= image_tag walk.get_walk_image, size: '200x150' %>
-        </div>
+        <div><%= walk.tag.prefecture %></div>
+        <div><%= image_tag walk.get_walk_image, size: '200x150' %></div>
         <div>
           <%= image_tag walk.user.get_profile_image, size: '50x50' %>
           <%= walk.user.name %>

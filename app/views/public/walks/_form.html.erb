@@ -9,6 +9,10 @@
       <td><%= f.text_area :opinion, placeholder: "紹介文" %></td>
     </tr>
     <tr>
+      <td><%= f.label :都道府県 %></td>
+      <td><%= f.select :tag_id, Tag.pluck(:prefecture, :id) %></td>
+    </tr>
+    <tr>
       <td><%= f.label :画像 %></td>
       <td><%= f.file_field :walk_image, accept: 'image/*' %></td>
     </tr>
