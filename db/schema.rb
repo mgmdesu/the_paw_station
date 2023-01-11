@@ -77,7 +77,8 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
     t.integer "owner_id", null: false
     t.string "group_name", default: "", null: false
     t.text "explanation", default: "", null: false
-    t.string "occasion", default: "", null: false
+    t.date "event_date", null: false
+    t.time "start_at", null: false
     t.string "location", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

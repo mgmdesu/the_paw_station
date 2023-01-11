@@ -1,7 +1,11 @@
 class Group < ApplicationRecord
   
-  has_many :group_users
-  has_many :users, through: :group_users
+  belongs_to :owner, class_name: 'User'
+  has_many :group_users, dependent: :destroy
+  
+  def is_owned_by?(user)
+    owner.id == user.id
+  end 
   
   has_one_attached :group_image
   
@@ -9,10 +13,10 @@ class Group < ApplicationRecord
     (group_image.attached?) ? group_image: 'no_image.png'
   end
   
-  validates :owner_id, presence: true
   validates :group_name, presence: true
   validates :explanation, presence: true
-  validates :occasion, presence: true
+  validates :event_date, presence: true
+  validates :start_at, presence: true
   validates :location, presence: true
   
 end

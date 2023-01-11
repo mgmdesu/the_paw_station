@@ -1,2 +1,36 @@
-<h1>Public::Groups#new</h1>
-<p>Find me in app/views/public/groups/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>New Group</h2>
+      
+      <%= form_with model: @group do |f| %>
+        <div>
+          <%= f.label :グループ名 %>
+          <%= f.text_field :group_name, autofocus: true %>
+        </div>
+        <div>
+          <%= f.label :紹介文 %>
+          <%= f.text_area :explanation %>
+        </div>
+        <div>
+          <%= f.label :グループ画像 %>
+          <%= f.file_field :group_image, accept: 'image/*' %>
+        </div>
+        <div>
+          <%= f.label :開催日 %>
+          <%= f.date_field :event_date, min: Time.zone.now %>
+        </div>
+        <div>
+          <%= f.label :開催時間 %>
+          <%= f.time_field :start_at %>
+        </div>
+        <div>
+          <%= f.label :開催場所 %>
+          <%= f.text_field :location %>
+        </div>
+        <div><%= f.submit '送信', class: "btn btn-primary" %></div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

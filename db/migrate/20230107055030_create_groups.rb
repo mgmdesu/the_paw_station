@@ -5,7 +5,8 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.integer :owner_id,    null: false, default: ""
       t.string  :group_name,  null: false, default: ""
       t.text    :explanation, null: false, default: ""
-      t.string  :occasion,    null: false, default: ""
+      t.date    :event_date,  null: false, default: ""
+      t.time    :start_at,    null: false, default: ""
       t.string  :location,    null: false, default: ""
 
       t.timestamps
