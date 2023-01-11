@@ -1,2 +1,46 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h2><%= @user.name %>さんの情報内容・ステータス変更</h2>
+      
+      <%= form_with model: @user, url: admin_user_path do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>ID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td>
+              <p>
+                <%= f.radio_button :is_deleted, :false %>
+                <%= f.label :is_delted, "利用中", class: "text text-success" %>
+              </p>
+              <p>
+                <%= f.radio_button :is_deleted, :true %>
+                <%= f.label :is_delted, "利用停止", class: "text text-secondary" %>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit '保存', class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

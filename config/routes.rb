@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   #管理者側
   namespace :admin do
     get '/' => 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :edit, :update]
   end
   
   #ユーザー側
