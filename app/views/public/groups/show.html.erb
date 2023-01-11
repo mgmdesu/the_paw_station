@@ -1,2 +1,16 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Group Detail</h2>
+        <div><%= image_tag @group.group_image, size:'300x200' %></div>
+        <div><%= @group.group_name %></div>
+        <div><%= @group.event_date.strftime("%Y年 %m月 %d日") %></div>
+        <div><%= @group.start_at.strftime("%H時%M分") %></div>
+        <div><%= @group.location %></div>
+        <div><%= @group.explanation %></div>
+        <div><%= link_to '編集', edit_group_path(@group.id) %></div>
+        
+        <div><%= link_to '一覧に戻る', groups_path %></div>
+    </div>
+  </div>
+</div>
