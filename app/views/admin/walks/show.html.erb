@@ -1,0 +1,22 @@
+<div class="container mt-md-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Take a Walk Detail</h2>
+        <div><%= @walk.tag.prefecture %></div>
+        <div><%= image_tag @walk.get_walk_image, size:'300x200' %></div>
+        <div>
+          <%= link_to user_path(@walk.user.id) do %>
+            <%= image_tag @walk.user.get_profile_image, size:'100x100' %>
+            <%= @walk.user.name %>
+          <% end %>
+        </div>
+        <div><%= @walk.title %></div>
+        <div><%= @walk.opinion %></div>
+        <div><%= @walk.dogrun_name %></div>
+        <div><%= @walk.facility_i18n %></div>
+        <div><%= @walk.size_i18n %></div>
+        <div><%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></div>
+      <%= render 'public/walks/comment', walk: @walk, walk_comment: @walk_comment %>
+    </div>
+  </div>
+</div>
