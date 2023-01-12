@@ -1,22 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3 class="text-center border">My Page Edit</h3>
+<div class='container mt-md-5'>
+  <div class='row'>
+    <div class='col-md-4'>
+      <%= render 'info', user: @user %>
+    </div>
+    <div>
         <%= form_with model: @user, url: user_path(current_user) do |f| %>
           <div class="form-group">
-            <%= f.label :'表示させたい名前' %>
+            <%= f.label :表示させたい名前 %>
             <%= f.text_field :name, autofocus: true, placeholder: "ユーザーネーム", class: "form-control name" %>
           </div>
           <div class="form-group">
-            <%= f.label :'プロフィール画像' %>
+            <%= f.label :プロフィール画像 %>
             <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
           </div>
           <div class="form-group">
-            <%= f.label :'自己紹介' %>
+            <%= f.label :自己紹介 %>
             <%= f.text_area :introduction, placeholder: "自己紹介や愛犬について書きましょう", class: "form-control introduction" %>
           </div>
           <div class="form-group">
-            <%= f.submit 'Update', class: "btn btn-success" %>
+            <%= f.submit '保存', class: "btn btn-outline-success mr-3" %>
+            <%= link_to 'キャンセル', user_path(@user), class: "btn btn-outline-dark" %>
           </div>
         <% end %>
         

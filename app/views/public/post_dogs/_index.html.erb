@@ -1,0 +1,10 @@
+<% post_dogs.each do |post_dog| %>
+  <div><%= image_tag post_dog.get_post_dog_image, size:'300x200' %></div>
+  <div>
+    <%= image_tag post_dog.user.get_profile_image, size:'80x80' %>
+    <%= post_dog.user.name %>
+  </div>
+  <div><%= post_dog.body %></div>
+  <div><%= post_dog.created_at.strftime('%Y/%m/%d') %></div>
+  <div><%= link_to '詳しく見る', post_dog_path(post_dog.id) %></div>
+<% end %>

@@ -1,24 +1,28 @@
-<table class="user_info_table">
+<table class="user_info_table ">
   <tr>
-    <%= image_tag user.get_profile_image, size:'50x50' %> 
-    <%= user.name %>
-    <%= link_to edit_user_path(user) do %>
-       <i class="fas fa-user-edit"></i>
+    <td align="right">
+    <% if current_user == user %>
+      <%= link_to edit_user_path(user) do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
     <% end %>
-   
-  </tr>
-  <tr>
-    <td>都道府県</td>
-  </tr>
-  <tr>
-    <td>
-      <%= user.introduction %>
     </td>
   </tr>
   <tr>
+    <td align="center">
+      <%= image_tag user.get_profile_image, size:'100x100' %>
+    </td>
+  </tr>
+  <tr>
+    <td align="left"><%= user.name %></td>
+  </tr>
+  <tr>
+    <td align="left"<%= user.introduction %></td>
+  </tr>
+  <tr>
     <td>
-      フォロー（<%= link_to user.followings.count, user_followings_path(user) %>）
-      フォロワー（<%= link_to user.followers.count, user_followers_path(user) %>）
+      <%= link_to user.followings.count, user_followings_path(user) %> フォロー中 
+      <%= link_to user.followers.count, user_followers_path(user) %> フォロワー 
     </td>
   </tr>
   <tr>
