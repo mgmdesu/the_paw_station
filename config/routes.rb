@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     
-    resource :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       get 'unsubscribe'
       patch 'withdraw'
       resource :relationships, only: [:create, :destroy]

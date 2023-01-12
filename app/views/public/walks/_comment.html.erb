@@ -13,7 +13,7 @@
   <table>
     <tr>
       <td>
-        <%= link_to users_path(walk_comment.user.id) do %>
+        <%= link_to user_path(walk_comment.user.id) do %>
           <%= image_tag walk_comment.user.get_profile_image, size:'100x100' %>
           <%= walk_comment.user.name %>
         <% end %>

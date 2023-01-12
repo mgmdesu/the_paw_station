@@ -1,4 +1,6 @@
 class Public::WalksController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :ensure_correct_user, only: [:edit, :update]
   
   def new
     @walk = Walk.new
@@ -52,4 +54,10 @@ class Public::WalksController < ApplicationController
     params.require(:walk).permit(:title, :opinion, :dogrun_name, :facility, :size, :walk_image, :tag_id)
   end 
   
+  def ensure_correct_user
+    @walk = Walk.find(params[:id])
+    unless @walk.user == current_user
+      redirect_to walks_path
+    end 
+  end 
 end

@@ -7,7 +7,7 @@
         <div><%= @walk.tag.prefecture %></div>
         <div><%= image_tag @walk.get_walk_image, size:'300x200' %></div>
         <div>
-          <%= link_to users_path(@walk.user.id) do %>
+          <%= link_to user_path(@walk.user.id) do %>
             <%= image_tag @walk.user.get_profile_image, size:'100x100' %>
             <%= @walk.user.name %>
           <% end %>

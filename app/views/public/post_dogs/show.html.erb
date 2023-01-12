@@ -8,7 +8,7 @@
         
         <div><%= image_tag @post_dog.get_post_dog_image, size:'300x200' %></div>
         <div>
-          <%= link_to users_path(@post_dog.user.id) do %>
+          <%= link_to user_path(@post_dog.user.id) do %>
             <%= image_tag @post_dog.user.get_profile_image, size:'80x80' %>
             <%= @post_dog.user.name %>
           <% end %>

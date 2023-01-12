@@ -1,4 +1,6 @@
 class Public::PostDogsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
   
   def new
     @post_dog = PostDog.new
@@ -49,5 +51,12 @@ class Public::PostDogsController < ApplicationController
   
   def post_dog_params
     params.require(:post_dog).permit(:body, :post_dog_image)
+  end 
+  
+  def ensure_correct_user
+    @post_dog = PostDog.find(params[:id])
+    unless @post_dog.user == current_user
+      redirect_to post_dogs_path
+    end 
   end 
 end

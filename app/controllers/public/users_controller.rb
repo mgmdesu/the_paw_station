@@ -1,18 +1,20 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, except:[:show]
+  before_action :ensure_correct_user, only: [:edit, :update]
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
   
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "登録情報を変更しました"
-      redirect_to users_path
+      redirect_to user_path(@user)
     else
       flash[:alert] = "入力内容をお確かめください"
       render :edit
@@ -23,7 +25,7 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
-    user = current_user
+    user = User.find(params[:id])
     user.update(is_deleted: true)
     reset_session
     flash[:alert] = "退会のお手続きが完了しました"
@@ -35,4 +37,12 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
+  
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(@user)
+    end 
+  end
+  
 end

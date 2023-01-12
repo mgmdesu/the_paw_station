@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h3 class="text-center border">My Page Edit</h3>
-        <%= form_with model: @user, url: users_path(current_user) do |f| %>
+        <%= form_with model: @user, url: user_path(current_user) do |f| %>
           <div class="form-group">
             <%= f.label :'表示させたい名前' %>
             <%= f.text_field :name, autofocus: true, placeholder: "ユーザーネーム", class: "form-control name" %>
@@ -21,7 +21,7 @@
         <% end %>
         
         <div class="link">
-          <%= link_to '退会手続きへ', unsubscribe_users_path, class: "btn btn-default-v3" %>
+          <%= link_to '退会手続きへ', user_unsubscribe_path(@user), class: "btn btn-default-v3" %>
         </div>
     </div>
   </div>

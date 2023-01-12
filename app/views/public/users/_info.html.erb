@@ -2,7 +2,7 @@
   <tr>
     <%= image_tag user.get_profile_image, size:'50x50' %> 
     <%= user.name %>
-    <%= link_to edit_users_path do %>
+    <%= link_to edit_user_path(user) do %>
        <i class="fas fa-user-edit"></i>
     <% end %>
    
@@ -17,24 +17,15 @@
   </tr>
   <tr>
     <td>
-      フォロー（）
-      フォロワー（）
+      フォロー（<%= link_to user.followings.count, user_followings_path(user) %>）
+      フォロワー（<%= link_to user.followers.count, user_followers_path(user) %>）
     </td>
   </tr>
   <tr>
-    <td>
-    <% if current_user != user %>  
-      <% if current_user.following?(user) %>
-        <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
-      <% end %>
-    <% end %>
-    </td>
+    <td><%= render 'public/relationships/btn', user: @user %></td>
   </tr>
   <tr>
     <% if current_user == user %>
-      <td><%= link_to "Mypage", users_path, class: "btn-block text-center" %></td>
       <td><%#= link_to "Bookmarks", bookmarks_walks_path, class: "btn-block text-center" %></td>
       <td><%#= link_to "Favorites", , class: "btn-block text-center" %></td>
     <% end %>
