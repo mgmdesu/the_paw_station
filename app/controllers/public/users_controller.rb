@@ -1,9 +1,10 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except:[:show]
+  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
+    @post_dogs = @user.post_dogs
   end
 
   def edit

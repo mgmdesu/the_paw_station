@@ -1,8 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <h2></h2>
-        
+      <h2>Paw Patrol</h2>
+        <table>
+          <tr>
+            <td>Users</td>
+            <td><%= link_to 'Go Users', admin_users_path %></td>
+          </tr>
+          <tr>
+            <td>Walks</td>
+            <td><%= link_to 'Go to Take a Walk', walks_path %></td>
+          </tr>
+          <tr>
+            <td>Dogs</td>
+            <td><%= link_to 'Go to Dogs', post_dogs_path %></td>
+          </tr>
+          <tr>
+            <td>Meetup</td>
+            <td><%= link_to 'Go to Meetup', groups_path %></td>
+          </tr>
+        </table>
     </div>
   </div>
 </div>

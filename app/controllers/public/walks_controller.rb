@@ -20,6 +20,10 @@ class Public::WalksController < ApplicationController
 
   def index
     @walks = Walk.all
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @walks = @walks.where(tag_id: params[:tag_id])
+    end
   end
 
   def show

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   #ユーザー側
+  devise_for :users, controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  #ゲストユーザー
+  devise_scope :user do
+    post 'guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
+
+  #ユーザー側
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
@@ -33,17 +43,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update]
   end
   
-  #ユーザー側
-  devise_for :users, controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-  
-  #ゲストユーザー
-  devise_scope :user do
-    post 'guest_sign_in' => 'public/sessions#guest_sign_in'
-  end
-  
+
   #管理者側
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
