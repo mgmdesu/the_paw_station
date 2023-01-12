@@ -1,11 +1,13 @@
 <h2>Comment</h2>
 <p>コメント数：<%= walk.walk_comments.count %></p>
-<%= form_with model: [walk, walk_comment] do |f| %>
-  <table>
-    <tr><td><%= f.label :コメント %></td></tr>
-    <tr><td><%= f.text_area :walk_comment, placeholder: 'コメントを記入' %></td></tr>
-    <tr><td><%= f.submit 'コメント' %></td></tr>
-  </table>
+<% if user_signed_in? %>
+  <%= form_with model: [walk, walk_comment] do |f| %>
+    <table>
+      <tr><td><%= f.label :コメント %></td></tr>
+      <tr><td><%= f.text_area :walk_comment, placeholder: 'コメントを記入' %></td></tr>
+      <tr><td><%= f.submit 'コメント' %></td></tr>
+    </table>
+  <% end %>
 <% end %>
 
 

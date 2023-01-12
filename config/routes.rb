@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     resources :walks, only: [:index, :show, :destroy] do 
       resources :walk_comments, only: [:destroy]
     end
+    resources :post_dogs, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end 
   end
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

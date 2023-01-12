@@ -6,5 +6,11 @@
   </div>
   <div><%= post_dog.body %></div>
   <div><%= post_dog.created_at.strftime('%Y/%m/%d') %></div>
-  <div><%= link_to '詳しく見る', post_dog_path(post_dog.id) %></div>
+  <div>
+    <% if admin_signed_in? %>
+      <%= link_to '詳しく見る', admin_post_dog_path(post_dog.id) %>
+    <% else %>
+      <%= link_to '詳しく見る', post_dog_path(post_dog.id) %>
+    <% end %>
+  </div>
 <% end %>
