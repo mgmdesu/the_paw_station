@@ -1,23 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Group Lists</h2>
-        <%= link_to 'NEW GROUP', new_group_path %>
-        <% @groups.each do |group| %>
-          <div>
-            <%= image_tag group.get_group_image, size: '80x80' %>
-            <%= group.group_name %>
+<div class="container mt-md-5">
+  <div class="row mx-auto">
+    <h2 class="mx-auto">Meetup Lists</h2>
+      <div class="pl-5"><%= link_to 'オフ会を作る', new_group_path, class: "btn btn-outline-dark rounded-pill" %></div>
+  </div>
+  
+  <div class="card mb-3">
+    <div class="row no-gutters mt-3">
+      <% @groups.each do |group| %>
+        <div class="col-md-4">
+          <%= image_tag group.get_group_image, size: '200x200' %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= group.group_name %></h5>
+            <p class="card-text">場所： <%= group.location %></p>
+            <p class="card-text">開催日： <%= group.event_date.strftime("%Y年%m月%d日") %></p>
+            <p class="card-text">開催時間： <%= group.start_at.strftime("%H時%M分") %></p>
+            <p class="card-text"><%= link_to '詳しく見る', group_path(group.id) %></p>
+            <p class="card-text">
+              <% if group.is_owned_by?(current_user) %>
+                <%= link_to '編集', edit_group_path(group.id) %>
+              <% end %>
+            </p>
           </div>
-          <div><%= group.event_date.strftime("%Y年 %m月 %d日") %></div>
-          <div><%= group.start_at.strftime("%H時%M分") %></div>
-          <div><%= group.location %></div>
-          <div><%= link_to '詳しく見る', group_path(group.id) %></div>
-          <div>
-            <% if group.is_owned_by?(current_user) %>
-              <%= link_to '編集', edit_group_path(group.id) %>
-            <% end %>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class Admin::PostDogsController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @post_dogs = PostDog.all

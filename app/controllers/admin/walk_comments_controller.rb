@@ -1,4 +1,5 @@
 class Admin::WalkCommentsController < ApplicationController
+  before_action :authenticate_admin!
   
   def destroy
     WalkComment.find(params[:id]).destroy
