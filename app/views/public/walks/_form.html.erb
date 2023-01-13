@@ -1,49 +1,47 @@
-<%= form_with model: walk do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label :タイトル %></td>
-      <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :紹介文 %></td>
-      <td><%= f.text_area :opinion, placeholder: "紹介文" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :都道府県 %></td>
-      <td><%= f.select :tag_id, Tag.pluck(:prefecture, :id) %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :画像 %></td>
-      <td><%= f.file_field :walk_image, accept: 'image/*' %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :ドッグラン名（任意） %></td>
-      <td><%= f.text_field :dogrun_name, placeholder: "ドッグラン施設名" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :場所 %></td>
-      <td>
-        <%= f.radio_button :facility, Walk.facilities.key(0) %>
-        <%= f.label :facility, Walk.facilities_i18n[:outdoor] %>
-        <%= f.radio_button :facility, Walk.facilities.key(1) %>
-        <%= f.label :facility, Walk.facilities_i18n[:indoor] %>
-        <%= f.radio_button :facility, Walk.facilities.key(2) %>
-        <%= f.label :facility, Walk.facilities_i18n[:both] %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.label :犬の大きさ %></td>
-      <td>
-        <%= f.radio_button :size, Walk.sizes.key(0) %>
-        <%= f.label :size, Walk.sizes_i18n[:small_dog] %>
-        <%= f.radio_button :size, Walk.sizes.key(1) %>
-        <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %>
-        <%= f.radio_button :size, Walk.sizes.key(2) %>
-        <%= f.label :size, Walk.sizes_i18n[:large_size_dog] %> 
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.submit '送信', class: "btn btn-success" %></td>
-    </tr>
-  </table>
-<% end %>
+<div class="row no-gutters">
+  <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5" >
+    <h5>Post to Walk information</h5>
+    <div class="form-body p-4">
+      <%= form_with model: walk do |f| %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-bone"></i></span>
+          </div>
+            <%= f.text_field :title, autofocus: true, placeholder: "タイトル" %>
+        </div>
+        <%= f.text_area :opinion, class: "form-control", row: "4", placeholder: "コメントはこちら" %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <%= f.select :tag_id, Tag.pluck(:prefecture, :id) %>
+        </div>
+        <%= f.file_field :walk_image, accept: 'image/*', class: "w-100" %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-dog"></i></span>
+          </div>
+          <%= f.text_field :dogrun_name, placeholder: "ドッグラン名・施設名" %>
+        </div>
+        <div>
+          <%= f.radio_button :facility, Walk.facilities.key(0) %>
+          <%= f.label :facility, Walk.facilities_i18n[:outdoor] %>
+          <%= f.radio_button :facility, Walk.facilities.key(1) %>
+          <%= f.label :facility, Walk.facilities_i18n[:indoor] %>
+          <%= f.radio_button :facility, Walk.facilities.key(2) %>
+          <%= f.label :facility, Walk.facilities_i18n[:both] %>
+        </div>
+        <div>
+          <%= f.radio_button :size, Walk.sizes.key(0) %>
+          <%= f.label :size, Walk.sizes_i18n[:small_dog] %>
+          <%= f.radio_button :size, Walk.sizes.key(1) %>
+          <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %>
+          <%= f.radio_button :size, Walk.sizes.key(2) %>
+          <%= f.label :size, Walk.sizes_i18n[:large_size_dog] %> 
+        </div>
+        <hr>
+        <%= f.submit '送信', class: "btn btn-lg btn-block btn-info mt-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>
