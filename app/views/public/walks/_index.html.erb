@@ -1,38 +1,53 @@
+<div class="row">
+  <% if params[:tag_id] %>
+  <h2 class="row mx-auto"><%= tag.prefecture %>の検索結果</h2>
+<% else %>
+  <h2 class="row mx-auto">すべての散歩情報</h2>
+<% end %>
+</div>
+
 <div>
+  <h5>地域で検索</h5>
   <%= form_with url: walks_path , method: :get do |f| %>
     <%= f.select :tag_id, Tag.pluck(:prefecture, :id), :selected => params[:tag_id] %>
     <%= f.submit '検索' %>
   <% end %>
 </div>
 
-<div class="content">
-  <% if params[:tag_id] %>
-    <h2><%= tag.prefecture %>の検索結果</h2>
-  <% else %>
-    <h2>お散歩投稿一覧</h2>
-  <% end %>
-  
+<div class="card-deck p-0">
+  <div class="row m-0" style="width: 100%;">
   <% if walks.first %>
     <% walks.each do |walk| %>
-    <div><%= walk.tag.prefecture %></div>
-    <div><%= image_tag walk.get_walk_image, size: '200x150' %></div>
-    <div>
-      <%= image_tag walk.user.get_profile_image, size: '50x50' %>
-      <%= walk.user.name %>
-    </div>
-    <div><%= walk.title %></div>
-    <div><%= walk.opinion %></div>
-    <div><%= walk.dogrun_name %></div>
-    <div><%= walk.facility_i18n %></div>
-    <div><%= walk.size_i18n %></div>
-    <div>
-      <% if admin_signed_in? %>
-        <%= link_to '詳しく見る', admin_walk_path(walk.id) %>
-      <% else %>
-        <%= link_to '詳しく見る', walk_path(walk.id) %>
-      <% end %>
+    <div class="card col-lg-3 col-md-6 mb-5">
+      <%= image_tag walk.get_walk_image , size: '250x150' %>
+      <div class="card-body">
+        <p class="btn border-secondary btn-sm"><%= walk.tag.prefecture %></p>
+        <h5 class="card-title text-truncate"><%= walk.title %></h5>
+        <p class="card-text text-truncate"><%= walk.opinion %></p>
+        <p class="card-text"><%= walk.dogrun_name %></p>
+        <p class="card-text">
+          <small class="text-muted">
+            <%= image_tag walk.user.get_profile_image, size: '40x40' %>
+            <%= walk.user.name %>
+          </small>
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            <%= walk.created_at.strftime('%Y/%m/%d') %>
+          </small>
+        </p>
+        <div class="text-right">
+          <% if admin_signed_in? %>
+            <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+          <% else %>
+            <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <% end %>
   <% else %>
     <h2>まだ投稿されていません</h2>
   <% end %>
+</div>
+</div>
