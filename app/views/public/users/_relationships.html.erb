@@ -1,9 +1,10 @@
 <table>
   <% users.each do |user| %>
     <tr>
-      <td><%= image_tag user.get_profile_image, size:'80x80' %></td>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td><%= render 'btn', user: user %></td>
+      <td>
+        <%= image_tag user.get_profile_image, size: '80x80', class: "rounded-circle" %>
+        <%= link_to user.name, user_path(user) %>
+        <span class="ml-5"><%= render 'btn', user: user %></span>
     </tr>
   <% end %>
 </table>
