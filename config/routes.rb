@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:index, :create, :destroy]
     end 
     
-    resources :groups, except: [:destroy] do
+    resources :groups do
       resource :group_users, only: [:create, :destroy]
     end 
     
