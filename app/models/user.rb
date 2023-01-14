@@ -22,6 +22,7 @@ class User < ApplicationRecord
   
   #グループ
   has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users, dependent: :destroy
   
   #フォロー機能
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

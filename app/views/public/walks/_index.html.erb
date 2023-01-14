@@ -14,34 +14,37 @@
   <% end %>
 </div>
 
-<div class="card-deck p-0">
-  <div class="row m-0" style="width: 100%;">
+<div class="card-deck py-5">
   <% if walks.first %>
     <% walks.each do |walk| %>
-    <div class="card col-lg-3 col-md-6 mb-5">
-      <%= image_tag walk.get_walk_image , size: '250x150' %>
+    <div class="card w-50 mt-4 shadow-lg">
+      <%= image_tag walk.get_walk_image , size: '250x150', class: "card-img-top"; %>
       <div class="card-body">
-        <p class="btn border-secondary btn-sm"><%= walk.tag.prefecture %></p>
-        <h5 class="card-title text-truncate"><%= walk.title %></h5>
-        <p class="card-text text-truncate"><%= walk.opinion %></p>
-        <p class="card-text"><%= walk.dogrun_name %></p>
-        <p class="card-text">
-          <small class="text-muted">
-            <%= image_tag walk.user.get_profile_image, size: '40x40' %>
-            <%= walk.user.name %>
-          </small>
-        </p>
-        <p class="card-text">
-          <small class="text-muted">
-            <%= walk.created_at.strftime('%Y/%m/%d') %>
-          </small>
-        </p>
+        <div class="row">
+          <h5 class="card-title text-truncate"><%= walk.title %></h5>
+          <p class="card-text">
+            <i class="fas fa-map-marker-alt"></i><%= walk.tag.prefecture %>
+          </p>
+          <p class="card-text text-truncate"><%= walk.opinion %></p>
+          <p class="card-text"><%= walk.dogrun_name %></p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+              <%= walk.user.name %>
+            </small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= walk.created_at.strftime('%Y/%m/%d') %>
+            </small>
+          </p>
         <div class="text-right">
           <% if admin_signed_in? %>
             <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
           <% else %>
             <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
           <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -49,5 +52,4 @@
   <% else %>
     <h2>まだ投稿されていません</h2>
   <% end %>
-</div>
 </div>

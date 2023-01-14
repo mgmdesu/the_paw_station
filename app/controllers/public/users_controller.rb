@@ -33,6 +33,12 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
   
+  def bookmarks
+    @user = User.find(params[:id])
+    bookmarks = Bookmark.where(user_id: @user.id).pluck(:walk_id)
+    @bookmark_walks = Walk.find(bookmarks)
+  end 
+  
   private
   
   def user_params

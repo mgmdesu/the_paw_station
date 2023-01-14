@@ -1,9 +1,0 @@
-<table>
-  <% users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image, size:'80x80' %></td>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td><%= render 'btn', user: user %></td>
-    </tr>
-  <% end %>
-</table>

@@ -30,7 +30,7 @@
   </tr>
   <tr>
     <% if current_user == user %>
-      <td><%#= link_to "Bookmarks", user_path(@user), class: "btn-block text-center" %></td>
+      <td><%= link_to "Bookmarks", bookmarks_user_path(@user), class: "btn-block text-center" %></td>
     <% end %>
   </tr>
   
