@@ -1,0 +1,23 @@
+<div class="row no-gutters">
+  <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5" >
+    <h5>Post Mydog</h5>
+    <div class="form-body p-4">
+      <%= form_with model: @post_dog do |f| %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-image"></i></span>
+          </div>
+          <%= f.file_field :post_dog_image, accept: 'image/*' %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="far fa-comment"></i></span>
+          </div>
+          <%= f.text_area :body, autofocus: true, placeholder: "内容を入力" %>
+        </div>
+        <hr>
+        <%= f.submit '送信', class: "btn btn-block btn-success mt-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>

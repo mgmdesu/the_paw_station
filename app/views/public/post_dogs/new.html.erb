@@ -1,24 +1,3 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10">
-      <h3>Post My Dog</h3>
-        <%= form_with model: @post_dog do |f| %>
-          <table>
-            <tbody>
-              <tr>
-                <td><%= f.label :本文 %></td>
-                <td><%= f.text_area :body, autofocus: true %></td>
-              </tr>
-              <tr></tr>
-                <td><%= f.label :画像 %></td>
-                <td><%= f.file_field :post_dog_image, accept: 'image/*' %></td>
-              </tr>
-              <tr>
-                <td><%= f.submit '投稿', class: "btn btn-success" %></td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-    </div>
-  </div>
+<div class="container mt-md-5">
+  <%= render 'form', post_dog: @post_dog %>
 </div>

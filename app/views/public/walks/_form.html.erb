@@ -16,31 +16,40 @@
           </div>
           <%= f.select :tag_id, Tag.pluck(:prefecture, :id) %>
         </div>
-        <%= f.file_field :walk_image, accept: 'image/*', class: "w-100" %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-image"></i></span>
+          </div>
+          <%= f.file_field :walk_image, accept: 'image/*' %>
+        </div>
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
             <span class="input-group-text" aria-hidden="true"><i class="fas fa-dog"></i></span>
           </div>
           <%= f.text_field :dogrun_name, placeholder: "ドッグラン名・施設名" %>
         </div>
-        <div>
+        <div class="input-group">
+          <div class="input-group-text"><i class="fas fa-map-signs"></i></div>
           <%= f.radio_button :facility, Walk.facilities.key(0) %>
-          <%= f.label :facility, Walk.facilities_i18n[:outdoor] %>
+          <%= f.label :facility, Walk.facilities_i18n[:outdoor] %><br>
           <%= f.radio_button :facility, Walk.facilities.key(1) %>
-          <%= f.label :facility, Walk.facilities_i18n[:indoor] %>
+          <%= f.label :facility, Walk.facilities_i18n[:indoor] %><br>
           <%= f.radio_button :facility, Walk.facilities.key(2) %>
           <%= f.label :facility, Walk.facilities_i18n[:both] %>
         </div>
-        <div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-dog"></i></span>
+          </div>
           <%= f.radio_button :size, Walk.sizes.key(0) %>
-          <%= f.label :size, Walk.sizes_i18n[:small_dog] %>
+          <%= f.label :size, Walk.sizes_i18n[:small_dog] %><br>
           <%= f.radio_button :size, Walk.sizes.key(1) %>
-          <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %>
+          <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %><br>
           <%= f.radio_button :size, Walk.sizes.key(2) %>
           <%= f.label :size, Walk.sizes_i18n[:large_size_dog] %> 
         </div>
         <hr>
-        <%= f.submit '送信', class: "btn btn-lg btn-block btn-info mt-4" %>
+        <%= f.submit '送信', class: "btn btn-block btn-success mt-4" %>
       <% end %>
     </div>
   </div>
