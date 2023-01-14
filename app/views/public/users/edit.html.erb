@@ -4,6 +4,7 @@
       <%= render 'info', user: @user %>
     </div>
     <div>
+      <%=render "layouts/errors", obj: @user %>
         <%= form_with model: @user, url: user_path(current_user) do |f| %>
           <div class="form-group">
             <%= f.label :表示させたい名前 %>
