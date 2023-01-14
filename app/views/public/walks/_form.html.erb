@@ -5,51 +5,74 @@
       <%= form_with model: walk do |f| %>
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-bone"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-bone"></i></span>
           </div>
-            <%= f.text_field :title, autofocus: true, placeholder: "タイトル" %>
+          <div class="ml-3"><%= f.text_field :title, autofocus: true, placeholder: "タイトル", class: "form-control" %></div>
         </div>
-        <%= f.text_area :opinion, class: "form-control", row: "4", placeholder: "コメントはこちら" %>
+        
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
           </div>
-          <%= f.select :tag_id, Tag.pluck(:prefecture, :id) %>
+          <div class="ml-3"><%= f.select :tag_id, Tag.pluck(:prefecture, :id), class: "form-control" %></div>
         </div>
+        
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-image"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-pin"></i></span>
           </div>
-          <%= f.file_field :walk_image, accept: 'image/*' %>
+          <div class="ml-3"><%= f.text_field :dogrun_name, placeholder: "ドッグラン名・施設名", class: "form-control" %></div>
         </div>
-        <div class="input-group mb-3 mt-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-dog"></i></span>
-          </div>
-          <%= f.text_field :dogrun_name, placeholder: "ドッグラン名・施設名" %>
-        </div>
+        
         <div class="input-group">
-          <div class="input-group-text"><i class="fas fa-map-signs"></i></div>
-            <%= f.radio_button :facility, Walk.facilities.key(0) %>
-            <%= f.label :facility, Walk.facilities_i18n[:outdoor] %>
-            <%= f.radio_button :facility, Walk.facilities.key(1) %>
-            <%= f.label :facility, Walk.facilities_i18n[:indoor] %>
-            <%= f.radio_button :facility, Walk.facilities.key(2) %>
-            <%= f.label :facility, Walk.facilities_i18n[:both] %>
+          <div class="input-group-text rounded"><i class="fas fa-map-signs"></i></div>
+          <div class="ml-3">
+            <div>
+              <%= f.radio_button :facility, Walk.facilities.key(0) %>
+              <%= f.label :facility, Walk.facilities_i18n[:outdoor] %>
+            </div>
+            <div>
+              <%= f.radio_button :facility, Walk.facilities.key(1) %>
+              <%= f.label :facility, Walk.facilities_i18n[:indoor] %>
+            </div>
+            <div>
+              <%= f.radio_button :facility, Walk.facilities.key(2) %>
+              <%= f.label :facility, Walk.facilities_i18n[:both] %>
+            </div>
+          </div>
         </div>
+        
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-dog"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-dog"></i></span>
           </div>
-          <%= f.radio_button :size, Walk.sizes.key(0) %>
-          <%= f.label :size, Walk.sizes_i18n[:small_dog] %>
-          <%= f.radio_button :size, Walk.sizes.key(1) %>
-          <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %>
-          <%= f.radio_button :size, Walk.sizes.key(2) %>
-          <%= f.label :size, Walk.sizes_i18n[:large_size_dog] %> 
+          <div class="ml-3">
+            <div>
+              <%= f.radio_button :size, Walk.sizes.key(0) %>
+              <%= f.label :size, Walk.sizes_i18n[:small_dog] %>
+            </div>
+            <div>
+              <%= f.radio_button :size, Walk.sizes.key(1) %>
+              <%= f.label :size, Walk.sizes_i18n[:medium_size_dog] %>
+            </div>
+            <div>
+              <%= f.radio_button :size, Walk.sizes.key(2) %>
+              <%= f.label :size, Walk.sizes_i18n[:large_size_dog] %>
+            </div>
+          </div>
         </div>
+        
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-image"></i></span>
+          </div>
+          <div class="ml-3"><%= f.file_field :walk_image, accept: 'image/*' %></div>
+        </div>
+        
+        <div><%= f.text_area :opinion, class: "form-control", row: "4", placeholder: "コメントはこちら" %></div>
+        
         <hr>
-        <%= f.submit '送信', class: "btn btn-block btn-success mt-4" %>
+        <%= f.submit '送信', class: "btn btn-block btn-outline-warning mt-4" %>
       <% end %>
     </div>
   </div>

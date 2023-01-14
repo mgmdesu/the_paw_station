@@ -1,40 +1,43 @@
-<div class="col-md-5">
-  <p>コメント数：<%= walk.walk_comments.count %></p>
-  <% if user_signed_in? %>
-    <%= form_with model: [walk, walk_comment] do |f| %>
-      <table>
-        <tr><td><%= f.label :コメント %></td></tr>
-        <tr><td><%= f.text_area :walk_comment, placeholder: 'コメントを記入' %></td></tr>
-        <tr><td><%= f.submit 'コメント' %></td></tr>
-      </table>
-    <% end %>
-  <% end %>
-</div>
+<div class="row no-gutters rounded">
+  <div class="col-md-4 col-sm-10">
+    <div class="form-body p-4">
+      <% if user_signed_in? %>
+        <%= form_with model: [walk, walk_comment] do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
+            </div>
+            <div class="ml-3"><%= f.text_area :walk_comment, placeholder: 'コメントを書く', class: "form-control" %></div>
+          </div>
+          <div class="text-right"><%= f.submit 'コメント', row: "4", class: "btn btn-outline-warning mt-7" %></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<div class="col-md-7">
-<% walk.walk_comments.each do |walk_comment| %>
-  <table>
-    <tr>
-      <td>
-        <%= link_to user_path(walk_comment.user.id) do %>
-          <%= image_tag walk_comment.user.get_profile_image, size:'100x100' %>
-          <%= walk_comment.user.name %>
-        <% end %>
-      </td>
-      <td>
-        <% if walk_comment.user == current_user %>
-          <%= link_to '削除', walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        <% else %>
-          <%= link_to '削除', admin_walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= walk_comment.walk_comment %></td>
-    </tr>
-    <tr>
-      <td><%= walk_comment.created_at.strftime('%Y/%m/%d') %></td>
-    </tr>
-  </table>
-<% end %>
+  <div class="col-md-7 col-sm-10 offset-1">
+    <% walk.walk_comments.each do |walk_comment| %>
+      <div class="card w-75 mb-4">
+        <div class="card-body">
+          <p class="card-text">
+            <%= link_to user_path(walk_comment.user.id) do %>
+              <%= image_tag walk_comment.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+              <%= walk_comment.user.name %>
+            <% end %>
+          </p>
+          <p class="card-text"><%= walk_comment.walk_comment %></p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= walk_comment.created_at.strftime('%Y/%m/%d') %>
+            </small>
+            <% if walk_comment.user == current_user %>
+              <%= link_to '削除', walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+            <% else %>
+              <%= link_to '削除', admin_walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

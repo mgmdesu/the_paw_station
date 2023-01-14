@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container mt-md-5">
   <div class="row">
     <div class="col-md-12">
-      <h2>Post Dog Index</h2>
-      <%= link_to 'New Post', new_post_dog_path %>
-      
-      <%= render 'index', post_dogs: @post_dogs %>
+      <div class="text-center">
+        <h2>すべての投稿</h2>
+        <%= link_to 'New Post', new_post_dog_path %>
+     </div>
     </div>
   </div>
+
+  <%= render 'index', post_dogs: @post_dogs %>
 </div>

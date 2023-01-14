@@ -14,40 +14,40 @@
   <% end %>
 </div>
 
-<div class="card-deck py-5">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   <% if walks.first %>
     <% walks.each do |walk| %>
-    <div class="card w-50 mt-4 shadow-lg">
-      <%= image_tag walk.get_walk_image , size: '250x150', class: "card-img-top"; %>
-      <div class="card-body">
-        <div class="row">
-          <h5 class="card-title text-truncate"><%= walk.title %></h5>
-          <p class="card-text">
-            <i class="fas fa-map-marker-alt"></i><%= walk.tag.prefecture %>
-          </p>
-          <p class="card-text text-truncate"><%= walk.opinion %></p>
-          <p class="card-text"><%= walk.dogrun_name %></p>
-          <p class="card-text">
-            <small class="text-muted">
-              <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
-              <%= walk.user.name %>
-            </small>
-          </p>
-          <p class="card-text">
-            <small class="text-muted">
-              <%= walk.created_at.strftime('%Y/%m/%d') %>
-            </small>
-          </p>
-        <div class="text-right">
-          <% if admin_signed_in? %>
-            <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
-          <% else %>
-            <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
-          <% end %>
+      <div class="col mb-5">
+        <div class="card h-100 mt-4 shadow-lg">
+          <%= image_tag walk.get_walk_image , size: '300x200', class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title text-truncate"><%= walk.title %></h5>
+            <p class="card-text">
+              <i class="fas fa-map-marker-alt"></i> <%= walk.tag.prefecture %>
+            </p>
+            <p class="card-text text-truncate"><%= walk.opinion %></p>
+            <p class="card-text"><%= walk.dogrun_name %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+                <%= walk.user.name %>
+              </small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">
+                <%= walk.created_at.strftime('%Y/%m/%d') %>
+              </small>
+            </p>
+            <div class="text-right">
+              <% if admin_signed_in? %>
+                <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+              <% else %>
+                <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   <% else %>
     <h2>まだ投稿されていません</h2>

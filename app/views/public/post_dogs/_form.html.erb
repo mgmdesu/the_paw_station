@@ -5,18 +5,18 @@
       <%= form_with model: @post_dog do |f| %>
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fas fa-image"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-image"></i></span>
           </div>
-          <%= f.file_field :post_dog_image, accept: 'image/*' %>
+          <div class="ml-3"><%= f.file_field :post_dog_image, accept: 'image/*' %></div>
         </div>
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="far fa-comment"></i></span>
+            <span class="input-group-text rounded" aria-hidden="true"><i class="far fa-comment"></i></span>
           </div>
-          <%= f.text_area :body, autofocus: true, placeholder: "内容を入力" %>
+          <div class="ml-3"><%= f.text_area :body, autofocus: true, row: "5", placeholder: "内容を入力", class: "form-control" %></div>
         </div>
         <hr>
-        <%= f.submit '送信', class: "btn btn-block btn-success mt-4" %>
+        <%= f.submit '送信', class: "btn btn-block btn-outline-danger mt-4" %>
       <% end %>
     </div>
   </div>

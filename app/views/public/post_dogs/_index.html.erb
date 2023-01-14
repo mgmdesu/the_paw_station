@@ -1,16 +1,28 @@
-<% post_dogs.each do |post_dog| %>
-  <div><%= image_tag post_dog.get_post_dog_image, size:'300x200' %></div>
-  <div>
-    <%= image_tag post_dog.user.get_profile_image, size:'80x80' %>
-    <%= post_dog.user.name %>
-  </div>
-  <div><%= post_dog.body %></div>
-  <div><%= post_dog.created_at.strftime('%Y/%m/%d') %></div>
-  <div>
-    <% if admin_signed_in? %>
-      <%= link_to '詳しく見る', admin_post_dog_path(post_dog.id) %>
-    <% else %>
-      <%= link_to '詳しく見る', post_dog_path(post_dog.id) %>
-    <% end %>
-  </div>
-<% end %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% post_dogs.each do |post_dog| %>
+    <div class="col mb-5">
+      <div class="card h-100 mt-4 shadow-lg ">
+        <%= image_tag post_dog.get_post_dog_image, size: '300x200', class: "card-img-top img-fluid" %>
+        <div class="card-body">
+          <p class="card-text">
+            <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+            <%= post_dog.user.name %>
+          </p>
+          <p class="card-text"><%= post_dog.body %></p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= post_dog.created_at.strftime('%Y/%m/%d') %>
+            </small>
+          </p>
+          <div class="text-right">
+            <% if admin_signed_in? %>
+              <%= link_to '詳細を見る', admin_post_dog_path(post_dog.id) %>
+            <% else %>
+              <%= link_to '詳細を見る', post_dog_path(post_dog.id) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

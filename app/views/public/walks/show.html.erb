@@ -1,41 +1,41 @@
 <div class="container mt-md-5">
   <div class="row">
-    <div class="col-md-5">
-      <h5><%= @walk.tag.prefecture %></h5>
-      <div><%= image_tag @walk.get_walk_image, size:'300x200' %></div>
+    <div class="col-md-5 offset-1">
+      <h5><i class="fas fa-map-marker-alt"></i> <%= @walk.tag.prefecture %></h5>
+      <div><%= image_tag @walk.get_walk_image, size: '300x200' %></div>
     </div>
         
-    <div class="col-md-7">
+    <div class="col-md-6">
       <h5>information</h5>
         <div class="text-right">
           <!--ブックマークボタン-->
           <%= render 'bookmark', walk: @walk %>
         </div>
         
-        <table class="table ">
+        <table class="table">
           <tbody>
             <tr>
-              <td>タイトル</td>
+              <td style="width: 30%">タイトル</td>
               <td><%= @walk.title %></td>
             </tr>
             <tr>
-              <td>紹介文</td>
+              <td style="width: 30%">紹介文</td>
               <td><%= @walk.opinion %></td>
             </tr>
             <tr>
-              <td>施設名</td>
+              <td style="width: 30%">施設名</td>
               <td><%= @walk.dogrun_name %></td>
             </tr>
             <tr>
-              <td>施設詳細</td>
+              <td style="width: 30%">施設詳細</td>
               <td><%= @walk.facility_i18n %></td>
             </tr>
             <tr>
-              <td>わんちゃんの大きさ</td>
+              <td style="width: 30%">わんちゃんの大きさ</td>
               <td><%= @walk.size_i18n %></td>
             </tr>
             <tr>
-              <td>投稿者</td>
+              <td style="width: 30%">投稿者</td>
               <td>
                 <%= link_to @walk.user.name, user_path(@walk.user.id) %>
               </td>
@@ -45,16 +45,17 @@
         
         <div class="text-right">
           <% if @walk.user == current_user %>
-            <span class="pr-md-3"><%= link_to '編集', edit_walk_path(@walk.id), class: "btn btn-primary" %></span>
+            <span class="pr-md-3"><%= link_to '編集', edit_walk_path(@walk.id), class: "btn btn-info" %></span>
             <span><%= link_to '削除', @walk, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></span>
           <% end %>
         </div>
     </div>
   </div>
   
-  <div class="row">
-    <h4>comments</h4>
-      <!--コメント欄-->
-      <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
+  <h5>Comments（ <i class="far fa-comments"></i>：<%= @walk.walk_comments.count %> ）</h5>
+    <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
+  
+  <div class="text-center">
+    <i class="fas fa-th-list"></i> <%= link_to '一覧に戻る', walks_path %>
   </div>
 </div>
