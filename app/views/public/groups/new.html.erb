@@ -1,9 +1,4 @@
 <div class="container mt-md-5">
-  <div class="row">
-    <div class="mx-auto">
-      <h3 class="mb-3">オフ会を作る</h3>
-        <%=render "layouts/errors", obj: @group %>
-        <%= render 'form', group: @group %>
-    </div>
-  </div>
+  <%= render "layouts/errors", obj: @group %>
+  <%= render 'form', group: @group %>
 </div>

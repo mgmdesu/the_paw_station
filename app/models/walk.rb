@@ -23,6 +23,5 @@ class Walk < ApplicationRecord
   validates :opinion, presence: true
   validates :facility, presence: true
   validates :size, presence: true
-  validates :walk_image, presence: true
   
 end
