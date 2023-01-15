@@ -1,7 +1,6 @@
 <div class="container mt-md-5">
   <div class="row mx-auto">
     <h2 class="mx-auto">Meetup Lists</h2>
-      <div class="pl-5"><%= link_to 'オフ会を作る', new_group_path, class: "btn btn-outline-dark rounded-pill" %></div>
   </div>
   
   <div class="card mb-3">
@@ -21,7 +20,7 @@
                 <strong class="text-secondary">閉会</strong>
               <% else %>
                 <strong class="text-success">開催中</strong>
-                <p class="card-text"><%= link_to '詳しく見る', group_path(group.id) %></p>
+                <p class="card-text"><%= link_to '詳しく見る', admin_group_path(group.id) %></p>
               <% end %>
             </p>
           </div>

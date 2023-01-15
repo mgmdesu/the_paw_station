@@ -1,9 +1,9 @@
 <div class="container mt-md-5">
   <div class="row">
     <div class="mx-auto">
-      <h3 class="mb-3">オフ会を編集する</h3>
-        
-        <%= form_with model: @group, url: group_path do |f| %>
+      <h3 class="mb-3">オフ会の情報内容・ステータス変更</h3>
+      
+        <%= form_with model: @group, url: admin_group_path do |f| %>
         <div class="field mb-3">
           <%= f.label :オフ会の名前 %><br>
           <%= f.text_field :group_name, autofocus: true, placeholder: "名前" %>
@@ -31,16 +31,16 @@
         
         <div class="field mb-3">
           <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_delted, "開催中", class: "text text-success" %>
+          <%= f.label :is_delted, "公開", class: "text text-success" %>
           <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_delted, "閉会", class: "text text-secondary" %>
+          <%= f.label :is_delted, "非公開", class: "text text-secondary" %>
         </div>
         
         <div class="field">
           <%= f.submit '送信', class: "btn btn-primary" %>
         </div>
       <% end %>
-        
+
     </div>
   </div>
 </div>

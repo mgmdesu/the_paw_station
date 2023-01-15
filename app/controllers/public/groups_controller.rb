@@ -10,6 +10,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
+      flash[:notice] = "オフ会を作成しました"
       redirect_to groups_path(@group.id)
     else
       render :new
@@ -31,23 +32,17 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group.id)
+      flash[:notice] = "内容を変更しました"
+      redirect_to groups_path
     else
       render :edit
     end
   end 
-  
-  def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-    flash[:notice] = "オフ会を削除しました"
-    redirect_to groups_path
-  end 
-  
+
   private
   
   def group_params
-    params.require(:group).permit(:group_name, :explanation, :event_date, :start_at, :location, :group_image)
+    params.require(:group).permit(:group_name, :explanation, :event_date, :start_at, :location, :group_image, :is_deleted)
   end 
   
   def ensure_correct_user

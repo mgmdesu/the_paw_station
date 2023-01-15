@@ -37,9 +37,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:index, :create, :destroy]
     end 
     
-    resources :groups do
+    resources :groups, except: [:destroy] do
       resource :group_users, only: [:create, :destroy]
-    end 
+    end
     
     get '/search' => 'searches#search'
   end
@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :post_dogs, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:destroy]
     end 
+    resources :groups, except: [:destroy] 
   end
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

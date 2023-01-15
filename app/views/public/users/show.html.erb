@@ -1,10 +1,10 @@
 <div class='container mt-md-5'>
   <div class='row'>
-    <div class='col-md-4'>
+    <div class='col-md-3 offset-1'>
       <%= render 'info', user: @user %>
     </div>
     
-    <div class='col-md-7 offset-md-1'>
+    <div class='col-md-6'>
       <h2><%= @user.name %>'s </h2>
         <%= render 'public/post_dogs/index', post_dogs: @post_dogs %>
     </div>

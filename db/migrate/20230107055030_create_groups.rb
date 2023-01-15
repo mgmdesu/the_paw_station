@@ -8,6 +8,7 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.date    :event_date,  null: false, default: ""
       t.time    :start_at,    null: false, default: ""
       t.string  :location,    null: false, default: ""
+      t.boolean :is_deleted,  null: false, default: false
 
       t.timestamps
     end
