@@ -16,5 +16,6 @@ class PostDog < ApplicationRecord
   end
   
   validates :body, presence: true
+  validates :post_dog_image, presence: true
   
 end

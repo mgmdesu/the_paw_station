@@ -10,4 +10,65 @@ ja:
         small_dog: "小型犬"
         medium_size_dog: "中型犬"
         large_size_dog: "大型犬"
+  
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        profile_image: 画像
+        introduction: 自己紹介
         
+      walk:
+        title: タイトル
+        walk_image: 画像
+        opinion: 紹介文
+        dogrun_name: ドッグラン・施設名
+      
+      walk_comment:
+        walk_comment: コメント
+        
+      tag:
+        prefecture: 都道府県
+        
+      post_comment:
+        post_comment: コメント
+        
+      post_dog:
+        body: 紹介文
+        post_dog_image: 画像
+        
+      group:
+        group_name: グループ名
+        explanation: 説明文
+        event_date: 開催日
+        start_at: 開催日時
+        location: 開催場所
+        
+      
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: を受諾してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は一覧にありません
+      invalid: は不正な値です
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long: は%{count}文字以内で入力してください
+      too_short: は%{count}文字以上で入力してください
+      wrong_length: は%{count}文字で入力してください
