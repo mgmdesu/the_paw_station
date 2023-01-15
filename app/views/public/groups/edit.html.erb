@@ -1,46 +1,72 @@
 <div class="container mt-md-5">
-  <div class="row">
-    <div class="mx-auto">
-      <h3 class="mb-3">オフ会を編集する</h3>
-        
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-3" >
+      <h5 class="text-center mt-5">Group Detail Edit</h5>
+      <div class="form-body p-4">
         <%= form_with model: @group, url: group_path do |f| %>
-        <div class="field mb-3">
-          <%= f.label :オフ会の名前 %><br>
-          <%= f.text_field :group_name, autofocus: true, placeholder: "名前" %>
-        </div>
-        <div class="field mb-3 input-lg">
-          <%= f.label :詳細 %><br>
-          <%= f.text_area :explanation, placeholder: "オフ会内容詳細" %>
-        </div>
-        <div class="field mb-3">
-          <%= f.label :グループ画像 %><br>
-          <%= f.file_field :group_image, accept: 'image/*' %>
-        </div>
-        <div class="field mb-3">
-          <%= f.label :開催日 %><br>
-          <%= f.date_field :event_date, min: Time.zone.now %>
-        </div>
-        <div class="field mb-3">
-          <%= f.label :開催時間 %><br>
-          <%= f.time_field :start_at %>
-        </div>
-        <div class="field mb-3">
-          <%= f.label :開催場所 %><br>
-          <%= f.text_field :location, placeholder: "開催場所" %>
-        </div>
-        
-        <div class="field mb-3">
-          <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_delted, "開催中", class: "text text-success" %>
-          <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_delted, "閉会", class: "text text-secondary" %>
-        </div>
-        
-        <div class="field">
-          <%= f.submit '送信', class: "btn btn-primary" %>
-        </div>
-      <% end %>
-        
+  
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-users"></i></span>
+            </div>
+            <div class="ml-3"><%= f.text_field :group_name, autofocus: true, placeholder: "グループ名", class: "form-control" %></div>
+          </div>
+          
+          <div class="input-group mb-3 mt-4">
+            <%= f.text_area :explanation, placeholder: "詳細を記入する", class: "form-control" %>
+          </div>
+          
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-calendar-alt"></i></span>
+            </div>
+            <div class="ml-3"><%= f.date_field :event_date, min: Time.zone.now, class: "form-control" %></div>
+          </div>
+          
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-clock"></i></span>
+            </div>
+            <div class="ml-3"><%= f.time_field :start_at, class: "form-control" %></div>
+          </div>
+          
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-pin"></i></span>
+            </div>
+            <div class="ml-3"><%= f.text_field :location, placeholder: "開催場所", class: "form-control" %></div>
+          </div>
+            
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-image"></i></span>
+            </div>
+            <div class="ml-3"><%= f.file_field :group_image, accept: 'image/*' %></div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </div>
+            <div class="ml-3">
+              <div>
+                <%= f.radio_button :is_deleted, :false %>
+                <%= f.label :is_delted, "開催中", class: "text text-success" %>
+              </div>
+              <div>
+                <%= f.radio_button :is_deleted, :true %>
+                <%= f.label :is_delted, "閉会", class: "text text-secondary" %>
+              </div>
+            </div>
+          </div>
+          
+          <hr>
+          <div class="field">
+            <%= f.submit '送信', class: "btn btn-block btn-outline-success mt-4" %>
+          </div>
+        <% end %>
+          
+      </div>
     </div>
   </div>
 </div>
