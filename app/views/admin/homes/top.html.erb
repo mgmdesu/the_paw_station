@@ -1,25 +1,50 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="mx-auto">
-      <h2>Paw Patrol</h2>
-        <table>
-          <tr>
-            <td>Users</td>
-            <td><%= link_to 'Go Users', admin_users_path %></td>
-          </tr>
-          <tr>
-            <td>Walks</td>
-            <td><%= link_to 'Go to Take a Walk', admin_walks_path %></td>
-          </tr>
-          <tr>
-            <td>Dogs</td>
-            <td><%= link_to 'Go to Dogs', admin_post_dogs_path %></td>
-          </tr>
-          <tr>
-            <td>Meetup</td>
-            <td><%= link_to 'Go to Meetup', admin_groups_path %></td>
-          </tr>
-        </table>
+    <div class="col-md-12 col-sm-10">
+      
+      <div class="card w-75 mx-auto mb-3">
+        <div class="card-body">
+          <h5 class="card-title">User's Patrol</h5>
+            <p class="card-text">
+              不適切なユーザーがいた場合、そのユーザーを利用停止にすることができます。<br>
+              編集画面で「利用中」・「利用停止」が選べます。
+            </p>
+            <p><%= link_to 'ユーザーのパトロールに出かける', admin_users_path, class: "btn btn-info" %></p>
+        </div>
+      </div>
+      
+      <div class="card w-75 mx-auto my-3">
+        <div class="card-body">
+          <h5 class="card-title">Walk's Patrol</h5>
+            <p class="card-text">
+              不適切な情報やコメントがあれば管理人側から削除ができます。<br>
+              詳細画面から削除することができます。
+            </p>
+            <p><%= link_to 'お散歩情報のパトロールに出かける', admin_walks_path, class: "btn btn-warning" %></p>
+        </div>
+      </div>
+      
+      <div class="card w-75 mx-auto my-3">
+        <div class="card-body">
+          <h5 class="card-title">Dog's Patrol</h5>
+            <p class="card-text">
+              不適切な投稿やコメントがあれば管理人側から削除ができます。<br>
+              詳細画面から削除することができます。
+            </p>
+            <p><%= link_to 'わんちゃんのパトロールに出かける', admin_post_dogs_path, class: "btn btn-danger" %></p>
+        </div>
+      </div>
+      
+      <div class="card w-75 mx-auto my-3">
+        <div class="card-body">
+          <h5 class="card-title">Meetup's Patrol</h5>
+            <p class="card-text">
+              不適切なオフ会があれば公開停止することができます。<br>
+              編集画面から「公開」・「公開停止」にすることができます。
+            </p>
+            <p><%= link_to 'オフ会のパトロールに出かける', admin_groups_path, class: "btn btn-success" %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,6 @@
 <% if user_signed_in? %>
+  <p class="my-auto mr-2 text-nowrap"> ようこそ、<%= current_user.name %>さん！</p>
+  
   <li class="nav-item mr-3 text-nowrap">
     <%= link_to 'Mypage', user_path(current_user), class: "btn btn-outline-{dark}.bg-{warning} rounded-pill" %>
   </li>

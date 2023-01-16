@@ -1,21 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>Post dog Details</h2>
+<div class="container mt-5">
+  <div class="row mx-auto">
+    <div class="col-md-5 col-sm-4">
+      <h4>Post dog Details</h4>
         
-        <div><%= image_tag @post_dog.get_post_dog_image, size:'300x200' %></div>
-        <div>
-          <%= link_to user_path(@post_dog.user.id) do %>
-            <%= image_tag @post_dog.user.get_profile_image, size:'80x80' %>
+      <div class="card mx-auto my-5" style="width: 18rem;">
+        <%= image_tag @post_dog.get_post_dog_image, size: '300x200', class: "card-img-top" %>
+        
+        <div class="card-body">
+          <h6 class="card-text">
+            <%= image_tag @post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
             <%= @post_dog.user.name %>
-          <% end %>
+          </h6>
+          <p class="card-text"><%= @post_dog.body %></p>
+          <p class="card-text"><small><%= @post_dog.created_at.strftime('%Y/%m/%d') %></small></p>
+          <p class="card-text text-right">
+            <%= link_to '削除', admin_post_dog_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-danger" %>
+          </p>
         </div>
-        <div><%= @post_dog.body %></div>
-        <div><%= @post_dog.created_at.strftime('%Y/%m/%d') %></div>
-        <div><%= link_to '削除', admin_post_dog_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></div>
-        <div><%= render 'public/post_dogs/comment', post_dog: @post_dog, post_comment: @post_comment %></div>
-        
-        <div><%= link_to '一覧へ戻る', admin_post_dogs_path, class: "btn btn-primary" %> </div>
+      </div>
+    </div>
+
+    <div class="offset-1 col-md-6 col-sm-7">
+      <h4>Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h4>
+        <%= render 'public/post_dogs/comment', post_dog: @post_dog, post_comment: @post_comment %>
     </div>
   </div>
+
 </div>

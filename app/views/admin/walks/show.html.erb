@@ -1,22 +1,63 @@
-<div class="container mt-md-5">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Take a Walk Detail</h2>
-        <div><%= @walk.tag.prefecture %></div>
-        <div><%= image_tag @walk.get_walk_image, size:'300x200' %></div>
-        <div>
-          <%= link_to user_path(@walk.user.id) do %>
-            <%= image_tag @walk.user.get_profile_image, size:'100x100' %>
-            <%= @walk.user.name %>
-          <% end %>
+<div class="container mt-5">
+  <div class="row mx-auto">
+    <div class="col-md-5 col-sm-4">
+      <h4>Take a Walk Detail</h4>
+      
+      <div class="card mx-auto my-5" style="width: 20rem;">
+        <%= image_tag @walk.get_walk_image, size: '300x200', class: "card-img-top" %>
+        
+        <div class="card-body">
+          <h5 class="card-title pt-3"><%= @walk.title %></h5>
+          <p class="card-text"><%= @walk.opinion %></p>
         </div>
-        <div><%= @walk.title %></div>
-        <div><%= @walk.opinion %></div>
-        <div><%= @walk.dogrun_name %></div>
-        <div><%= @walk.facility_i18n %></div>
-        <div><%= @walk.size_i18n %></div>
-        <div><%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></div>
-      <%= render 'public/walks/comment', walk: @walk, walk_comment: @walk_comment %>
+        
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
+              <div class="ml-3"><%= @walk.tag.prefecture %></div>
+            </div>
+          </li>
+          
+          <li class="list-group-item">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-pin"></i></span>
+              <div class="ml-3"><%= @walk.dogrun_name %></div>
+            </div>
+          </li>
+          
+          <li class="list-group-item">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-signs"></i></span>
+              <div class="ml-3"><%= @walk.facility_i18n %></div>
+            </div>
+          </li>
+          
+          <li class="list-group-item">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-dog"></i></span>
+              <div class="ml-3"><%= @walk.size_i18n %></div>
+            </div>
+          </li>
+        </ul>
+        
+        <div class="card-body">
+          <div>
+            <%= image_tag @walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+            @ <%= @walk.user.name %>
+          </div>
+          <div>
+            <small class="text-right"><%= @walk.created_at.strftime('%Y/%m/%d') %></small>
+            <div class="text-right"><%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-danger" %></div>
+          </div>
+        </div>
+      </div>
     </div>
+  
+    <div class="offset-1 col-md-6 col-sm-7">
+      <h4>Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h4>
+        <%= render 'public/walks/comment', walk: @walk, walk_comment: @walk_comment %>
+    </div>
+    <div class="text-center"><%= link_to '一覧へ戻る', admin_walks_path, class: "btn btn-primary" %> </div>
   </div>
 </div>
