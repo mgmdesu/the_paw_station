@@ -1,48 +1,30 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-md-12">
-      <h2>Group Detail</h2>
-      
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>名前</td>
-            <td>
-              <%= image_tag @group.get_group_image, size: '50x50', class: "rounded-circle" %>
+    <div class="col-md-7 col-sm-6 mx-auto">
+      <h2>Meetup Detail</h2>
+
+        <div class="card">
+          <div class="card-header">
+            <strong>
+              <%= image_tag @group.get_group_image, size: '40x40', class: "rounded-circle" %>
               <%= @group.group_name %>
-            </td>
-          </tr>
-          <tr>
-            <td>開催日</td>
-            <td><%= @group.event_date.strftime("%Y年 %m月 %d日") %></td>
-          </tr>
-          <tr>
-            <td>開催時間</td>
-            <td><%= @group.start_at.strftime("%H時%M分") %></td>
-          </tr>
-          <tr>
-            <td>開催場所</td>
-            <td><%= @group.location %></td>
-          </tr>
-          <tr>
-            <td>詳細</td>
-            <td><%= @group.explanation %></td>
-          </tr>
-          <tr>
-            <td>メンバー</td>
-            <td>
+            </strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></p>
+            <p class="card-text">開催場所：<%= @group.location %></p>
+            <p class="card-text"><%= @group.explanation %></p>
+            <p class="card-text">参加予定メンバー：
               <% @group.users.each do |user| %>
                 <li style="list-style: none;"><%= user.name %></li>
-              <% end %> 
-            </td>
-          </tr>
-          <tr>
-            <td><%= link_to '編集', admin_edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
-          </tr>
-        </tbody>
-      </table>
-        
-      <div class="mx-auto"><%= link_to '一覧に戻る', admin_groups_path %></div>
+              <% end %>
+            </p>
+            <p class="text-right">
+              <%= link_to '戻る', admin_groups_path, class: "btn btn-outline-secondary" %>
+              <%= link_to '編集', edit_admin_group_path(@group), class: "btn  btn-outline-success" %>
+            </p>
+          </div>
+        </div>
     </div>
   </div>
 </div>
