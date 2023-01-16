@@ -1,32 +1,31 @@
-<div class="container mt-md-5">
-  <div class="row mx-auto">
-    <h2 class="mx-auto">Meetup Lists</h2>
-      <div class="pl-5"><%= link_to 'オフ会を作る', new_group_path, class: "btn btn-outline-dark rounded-pill" %></div>
-  </div>
-  
-  <div class="card mb-3">
-    <div class="row no-gutters mt-3">
-      <% @groups.each do |group| %>
-        <div class="col-md-4">
-          <%= image_tag group.get_group_image, size: '200x200' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"><%= group.group_name %></h5>
-            <p class="card-text">場所： <%= group.location %></p>
-            <p class="card-text">開催日： <%= group.event_date.strftime("%Y年%m月%d日") %></p>
-            <p class="card-text">開催時間： <%= group.start_at.strftime("%H時%M分") %></p>
-            <p class="card-text">
-              <% if group.is_deleted %>
-                <strong class="text-secondary">閉会</strong>
-              <% else %>
-                <strong class="text-success">開催中</strong>
-                <p class="card-text"><%= link_to '詳しく見る', group_path(group.id) %></p>
-              <% end %>
-            </p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7 col-sm-6 mx-auto">
+      <h2>Meetup Lists</h2>
+      <div class="text-right pb-2"><%= link_to 'オフ会を作る', new_group_path, class: "btn btn-outline-dark rounded-pill" %></div>
+        <% @groups.each do |group| %>
+          <div class="card mb-3">
+            <div class="card-header">
+              <strong>
+                <%= image_tag group.get_group_image, size: '40x40', class: "rounded-circle" %>
+                <%= group.group_name %>
+              </strong>
+            </div>
+            <div class="card-body">
+              <p class="card-text">開催日時：<%= group.event_date.strftime("%Y年%m月%d日") %> <%= group.start_at.strftime("%H時%M分") %></p>
+              <p class="card-text">開催場所：<%= group.location %></p>
+              <p class="card-text text-truncate"><%= group.explanation %></p>
+              <p class="card-text">
+                <% if group.is_deleted %>
+                  <strong class="text-secondary">CLOSE</strong>
+                <% else %>
+                  <strong class="text-success">OPEN</strong>
+                  <span class="float-right"><%= link_to '詳しく見る', group_path(group.id), class: "btn btn-sm btn-outline-secondary" %></p>
+                <% end %>
+              </p>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
     </div>
   </div>
 </div>

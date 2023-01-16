@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 w-100">
   <% if walks.first %>
     <% walks.each do |walk| %>
       <div class="col mb-5">
@@ -26,7 +26,6 @@
               <i class="fas fa-map-marker-alt"></i> <%= walk.tag.prefecture %>
             </p>
             <p class="card-text text-truncate"><%= walk.opinion %></p>
-            <p class="card-text"><%= walk.dogrun_name %></p>
             <p class="card-text">
               <small class="text-muted">
                 <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
@@ -34,22 +33,20 @@
               </small>
             </p>
             <p class="card-text">
-              <small class="text-muted">
-                <%= walk.created_at.strftime('%Y/%m/%d') %>
-              </small>
-            </p>
-            <div class="text-right">
+              <small class="text-muted"><%= walk.created_at.strftime('%Y/%m/%d') %></small>
+              <span class="float-right">
               <% if admin_signed_in? %>
-                <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+                <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
               <% else %>
-                <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-outline-dark rounded-pill" %>
+                <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
               <% end %>
-            </div>
+              </span>
+            </p>
           </div>
         </div>
       </div>
     <% end %>
   <% else %>
-    <h2>まだ投稿されていません</h2>
+    <h4 class="text-center">まだ投稿されていません</h4>
   <% end %>
 </div>
