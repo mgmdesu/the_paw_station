@@ -1,37 +1,26 @@
-<table class="user-info-table">
-  <tr>
-    <td align="right">
+<div class="card border-info" style="width: 18rem;">
+  <div class="card-header text-center border-info bg-info text-white">
+    <i class="fas fa-id-badge"></i> Profile
+  </div>
+  <div class="card-body">
+    <div class="image"><%= image_tag user.get_profile_image, size: '200x190', class: "d-block mx-auto" %></div>
+    <p class="card-text text-center">@ <%= user.name %></p>
+    <p class="card-text text-center"><%= user.introduction %></p>
+    <p class="card-text text-center">Followings：<%= link_to user.followings.count, user_followings_path(user) %></p>
+    <p class="card-text text-center">Follewers： <%= link_to user.followers.count, user_followers_path(user) %></p>
+    <p class="card-text text-center"><%= render 'public/relationships/btn', user: @user %></p>
     <% if current_user == user %>
-      <%= link_to edit_user_path(user) do %>
-        <i class="fas fa-edit"></i>
-      <% end %>
+      <div class="text-center mb-3">
+        <%= link_to edit_user_path(user), class: "btn btn-block btn-outline-dark btn-sm" do %>
+          <i class="fas fa-edit"></i> 登録情報編集
+        <% end %>
+      </div>
+      <div class="text-center">
+        <%= link_to bookmarks_user_path(@user), class: "btn btn-block btn-outline-dark btn-sm" do %>
+          <i class="fas fa-paw"></i> Bookmarks
+        <% end %>
+        </div>
     <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <%= image_tag user.get_profile_image, size:'100x100' %>
-    </td>
-  </tr>
-  <tr>
-    <td align="left"><%= user.name %></td>
-  </tr>
-  <tr>
-    <td align="left"><%= user.introduction %></td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to user.followings.count, user_followings_path(user) %> フォロー中 
-      <%= link_to user.followers.count, user_followers_path(user) %> フォロワー 
-    </td>
-  </tr>
-  <tr>
-    <td><%= render 'public/relationships/btn', user: @user %></td>
-  </tr>
-  <tr>
-    <% if current_user == user %>
-      <td><%= link_to "Bookmarks", bookmarks_user_path(@user), class: "btn-block text-center" %></td>
-    <% end %>
-  </tr>
+  </div>
+</div>  
   
-</table>
