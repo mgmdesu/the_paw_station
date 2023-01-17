@@ -19,7 +19,7 @@ class Public::WalksController < ApplicationController
   end 
 
   def index
-    @walks = Walk.all
+    @walks = Walk.page(params[:page]).per(18).reverse_order
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @walks = @walks.where(tag_id: params[:tag_id])

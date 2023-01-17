@@ -1,37 +1,44 @@
-<% if user_signed_in? %>
-  <%= form_with model: [post_dog, post_comment] do |f| %>
-    <table>
-      <tbody>
-        <tbody>
-          <tr><td><%= f.label :コメント %></td></tr>
-          <tr><td><%= f.text_area :dog_comment, placeholder: 'コメントはここに' %></td></tr>
-          <tr><td><%= f.submit 'コメント' %></td></tr>
-        </tbody>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
-
-<% post_dog.post_comments.each do |post_comment| %>
-  <table>
-    <tr>
-      <td>
-        <%= link_to user_path(post_comment.user.id) do %>
-          <%= image_tag post_comment.user.get_profile_image, size:'80x80' %>
-          <%= post_comment.user.name %>
+<div class="row no-gutters rounded">
+  <div class="col-md-4 col-sm-10">
+    <div class="form-body p-4">
+      <% if user_signed_in? %>
+        <%= form_with model: [post_dog, post_comment] do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
+            </div>
+            <div class="ml-3"><%= f.text_area :dog_comment, placeholder: 'コメントを書く', class: "form-control" %></div>
+          </div>
+          <div class="text-right"><%= f.submit 'コメント', row: "4", class: "btn btn-outline-warning mt-7" %></div>
         <% end %>
-      </td>
-      <td>
-        <% if post_comment.user == current_user %>
-          <%= link_to '削除', post_dog_post_comment_path(post_comment.post_dog, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        <% else %>
-           <%= link_to '削除', admin_post_dog_post_comment_path(post_comment.post_dog, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= post_comment.dog_comment %></td>
-      <td><%= post_comment.created_at.strftime('%Y/%m') %></td>
-    </tr>
-  </table>
-<% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="col-md-7 col-sm-10 offset-1">
+    <% post_dog.post_comments.each do |post_comment| %>
+      <div class="card w-75 mb-4">
+        <div class="card-body">
+          <p class="card-text">
+            <%= link_to user_path(post_comment.user.id) do %>
+              <%= image_tag post_comment.user.get_profile_image, size:'80x80' %>
+              <%= post_comment.user.name %>
+            <% end %>
+          </p>
+          <p class="card-text text-wrap"><%= post_comment.dog_comment %></p>
+            
+          <p class="card-text">
+            <small class="text-muted">
+              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+            </small>
+            <% if post_comment.user == current_user %>
+              <%= link_to '削除', post_dog_post_comment_path(post_comment.post_dog, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+            <% else %>
+               <%= link_to '削除', admin_post_dog_post_comment_path(post_comment.post_dog, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+            <% end %>
+          </p>
+       </div>
+      </div>
+    <% end %>
+  </div>
+</div>

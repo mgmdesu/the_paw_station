@@ -18,7 +18,7 @@ class Public::PostDogsController < ApplicationController
   end 
 
   def index
-    @post_dogs = PostDog.all
+    @post_dogs = PostDog.page(params[:page]).per(18).reverse_order
   end
 
   def show

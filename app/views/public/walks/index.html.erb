@@ -1,11 +1,9 @@
-<div class="container mt-md-5">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="text-right">
-        <%= link_to '投稿する', new_walk_path, class: "btn btn-outline-secondary" %>
-      </div>
-    </div>
+<div class="container mt-5">
+  <div class="text-right">
+    <%= link_to new_walk_path, class: "btn btn-secondary" do %>
+      <i class="fas fa-plus-circle"></i> 投稿する
+    <% end %>
   </div>
-      
   <%= render 'index', walks: @walks, tag: @tag %>
+  <div class="text-center"><%= paginate @walks %></div>
 </div>
