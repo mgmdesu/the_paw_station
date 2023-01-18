@@ -39,6 +39,12 @@ class Public::UsersController < ApplicationController
     @bookmark_walks = Walk.find(bookmarks)
   end 
   
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_dog_id)
+    @favorite_dogs = PostDog.find(favorites)
+  end 
+  
   private
   
   def user_params

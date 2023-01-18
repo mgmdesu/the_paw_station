@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
         get :bookmarks
+        get :favorites
       end 
     end
   

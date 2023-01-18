@@ -15,11 +15,16 @@
           <i class="fas fa-edit"></i> 登録情報編集
         <% end %>
       </div>
-      <div class="text-center">
+      <div class="text-center mb-3">
         <%= link_to bookmarks_user_path(@user), class: "btn btn-block btn-outline-dark btn-sm" do %>
           <i class="fas fa-paw"></i> Bookmarks
         <% end %>
-        </div>
+      </div>
+      <div class="text-center">
+        <%= link_to favorites_user_path(@user), class: "btn btn-block btn-outline-dark btn-sm" do %>
+          <i class="fas fa-heart"></i> Favorites
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>  

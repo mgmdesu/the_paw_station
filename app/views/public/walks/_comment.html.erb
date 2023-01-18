@@ -32,8 +32,6 @@
             </small>
             <% if walk_comment.user == current_user %>
               <%= link_to '削除', walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
-            <% else %>
-              <%= link_to '削除', admin_walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
             <% end %>
           </p>
         </div>

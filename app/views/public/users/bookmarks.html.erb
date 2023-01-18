@@ -5,7 +5,7 @@
     </div>
     
     <div class='col-md-8 col-sm-8 offset-1'>
-      <h3><i class="fas fa-paw"></i> Bookmarks</h3>
+      <h3 class="mt-2"><i class="fas fa-paw"></i> Bookmarks</h3>
       <table class="my-3">
         <thead class="border-bottom">
           <tr>
@@ -14,12 +14,12 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="mt-3">
+        <tbody class="mt-2">
           <% @bookmark_walks.each do |walk| %>
             <tr>
               <td class="pt-3 pr-4 text-wrap"><%= walk.title %></td>
               <td class="pt-3 pr-4 text-wrap"><%= walk.opinion %></td>
-              <td class="pt-3 pr-3"><%= link_to '詳細', walk_path(walk.id), class: "btn btn-sm btn-outline-info" %></td>
+              <td class="pt-3 pr-1"><%= link_to 'Show', walk_path(walk.id), class: "btn btn-sm btn-outline-info" %></td>
             </tr>
           <% end %>
         </tbody>
