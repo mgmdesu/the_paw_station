@@ -2,7 +2,7 @@ class Admin::WalksController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @walks = Walk.all
+    @walks = Walk.page(params[:page]).per(18).reverse_order
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @walks = @walks.where(tag_id: params[:tag_id])
@@ -11,7 +11,6 @@ class Admin::WalksController < ApplicationController
 
   def show
     @walk = Walk.find(params[:id])
-    @walk_comment = WalkComment.new
   end
   
   def destroy

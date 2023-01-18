@@ -2,12 +2,11 @@ class Admin::PostDogsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @post_dogs = PostDog.all
+    @post_dogs = PostDog.page(params[:page]).per(18).reverse_order
   end
 
   def show
     @post_dog = PostDog.find(params[:id])
-    @post_comment = PostComment.new
   end
   
   def destroy

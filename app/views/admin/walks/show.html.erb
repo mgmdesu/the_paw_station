@@ -1,63 +1,61 @@
 <div class="container mt-5">
-  <div class="row mx-auto">
-    <div class="col-md-5 col-sm-4">
-      <h4>Take a Walk Detail</h4>
-      
-      <div class="card mx-auto my-5" style="width: 20rem;">
-        <%= image_tag @walk.get_walk_image, size: '300x200', class: "card-img-top" %>
-        
-        <div class="card-body">
-          <h5 class="card-title pt-3"><%= @walk.title %></h5>
-          <p class="card-text"><%= @walk.opinion %></p>
-        </div>
-        
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
-              <div class="ml-3"><%= @walk.tag.prefecture %></div>
-            </div>
-          </li>
-          
-          <li class="list-group-item">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-pin"></i></span>
-              <div class="ml-3"><%= @walk.dogrun_name %></div>
-            </div>
-          </li>
-          
-          <li class="list-group-item">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-signs"></i></span>
-              <div class="ml-3"><%= @walk.facility_i18n %></div>
-            </div>
-          </li>
-          
-          <li class="list-group-item">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-dog"></i></span>
-              <div class="ml-3"><%= @walk.size_i18n %></div>
-            </div>
-          </li>
-        </ul>
-        
-        <div class="card-body">
-          <div>
-            <%= image_tag @walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-            @ <%= @walk.user.name %>
-          </div>
-          <div>
-            <small class="text-right"><%= @walk.created_at.strftime('%Y/%m/%d') %></small>
-            <div class="text-right"><%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-danger" %></div>
-          </div>
-        </div>
-      </div>
+  <div class="row border rounded">
+    <div class="col-md-3 mx-auto my-auto">
+      <div><%= image_tag @walk.get_walk_image, size: '380x280' %></div>
     </div>
+        
+    <div class="col-md-7 offset-1">
+      <h5 class="mt-4">information</h5>
+        <table class="table mt-5">
+          <tbody>
+            <tr>
+              <td><i class="fas fa-bone"></i></td>
+              <td class="text-wrap"><%= @walk.title %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-wrap"><%= @walk.opinion %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-map-marker-alt"></i></td>
+              <td><%= @walk.tag.prefecture %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-map-pin"></i></td>
+              <td class="text-wrap"><%= @walk.dogrun_name %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-map-signs"></i></td>
+              <td><%= @walk.facility_i18n %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-dog"></i></td>
+              <td><%= @walk.size_i18n %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-user"></i></td>
+              <td>
+                <%= image_tag @walk.user.get_profile_image, size: '30x30', class: "rounded-circle" %>@
+                <%= @walk.user.name %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        <div class="text-right pb-3">
+          <% if @walk.user == current_user %>
+            <span class="pr-md-3"><%= link_to '編集', edit_walk_path(@walk.id), class: "btn btn-info" %></span>
+            <span><%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-danger" %></span>
+          <% end %>
+        </div>
+    </div>
+  </div>
   
-    <div class="offset-1 col-md-6 col-sm-7">
-      <h4>Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h4>
-        <%= render 'public/walks/comment', walk: @walk, walk_comment: @walk_comment %>
-    </div>
-    <div class="text-center"><%= link_to '一覧へ戻る', admin_walks_path, class: "btn btn-primary" %> </div>
+  <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h5>
+    <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
+    
+  <div class="text-center">
+    <i class="fas fa-th-list"></i><%= link_to '一覧に戻る', admin_walks_path, class: "btn btn-default-v3" %>
   </div>
 </div>
