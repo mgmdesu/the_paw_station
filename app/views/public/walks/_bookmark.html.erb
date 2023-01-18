@@ -1,12 +1,12 @@
 <% if walk.bookmarked_by?(current_user) %>
   <p>
-    <%= link_to walk_bookmarks_path(walk), method: :delete do %>
+    <%= link_to walk_bookmarks_path(walk), method: :delete, remote: true do %>
       <i class="fas fa-paw"></i> ブックマーク中
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to walk_bookmarks_path(walk), method: :post do %>
+    <%= link_to walk_bookmarks_path(walk), method: :post, remote: true do %>
       <i class="fas fa-paw"></i> ブックマークする
     <% end %>
   </p>
