@@ -2,28 +2,28 @@
   <p class="my-auto mr-2 text-nowrap"> ようこそ、管理者さん！</p>
   
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Home', admin_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Home', admin_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Users', admin_users_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Users', admin_users_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Dog', admin_post_dogs_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Dog', admin_post_dogs_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Take a Walk', admin_walks_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Take a Walk', admin_walks_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Meetup', admin_groups_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Meetup', admin_groups_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: "btn" %>
   </li>
 <% else %>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Take a Walk', admin_walks_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Take a Walk', admin_walks_path, class: "btn" %>
   </li>
   <li class="nav-item mr-3 text-nowrap">
-    <%= link_to 'Log in', new_admin_session_path, class: "btn btn-outline-secondary" %>
+    <%= link_to 'Log in', new_admin_session_path, class: "btn" %>
   </li>
 <% end %>
