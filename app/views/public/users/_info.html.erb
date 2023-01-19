@@ -6,9 +6,10 @@
     <div class="image"><%= image_tag user.get_profile_image, size: '200x190', class: "d-block mx-auto" %></div>
     <p class="card-text text-center">@ <%= user.name %></p>
     <p class="card-text text-center"><%= user.introduction %></p>
-    <p class="card-text text-center">Followings：<%= link_to user.followings.count, user_followings_path(user) %></p>
-    <p class="card-text text-center">Follewers： <%= link_to user.followers.count, user_followers_path(user) %></p>
-    <p class="card-text text-center"><%= render 'public/relationships/btn', user: @user %></p>
+    <p id="followings_count_<%= @user.id %>", class="card-text text-center"><%= render 'public/relationships/followings_counter', user: user %></p>
+    <p id="followers_count_<%= @user.id %>", class="card-text text-center"><%= render 'public/relationships/followers_counter', user: user %></p>
+    <p id="follow_btn_<%= user.id %>", class="card-text text-center"><%= render 'public/relationships/btn', user: @user %></p>
+    
     <% if current_user == user %>
       <div class="text-center mb-3">
         <%= link_to edit_user_path(user), class: "btn btn-block btn-outline-dark btn-sm" do %>
