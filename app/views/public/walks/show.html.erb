@@ -1,11 +1,13 @@
 <div class="container mt-5">
+  <div class="my-2"><%= flash[:notice] %></div>
   <div class="row border rounded">
     <div class="col-md-3 mx-auto my-auto">
-      <div><%= image_tag @walk.get_walk_image, size: '380x280' %></div>
+      <%= image_tag @walk.get_walk_image, size: '380x280' %>
     </div>
         
     <div class="col-md-7 offset-1">
-      <h5 class="mt-4">information</h5>
+      <h5 class="mt-4">Information</h5>
+        <!--ブックマーク/非同期通信化-->
         <div id="bookmark_btn_<%= @walk.id %>" class="text-right">
           <%= render 'bookmark', walk: @walk %>
         </div>
@@ -57,7 +59,7 @@
     </div>
   </div>
   
-
+  <!--コメント/投稿・一覧-->
   <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h5>
     <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
     
