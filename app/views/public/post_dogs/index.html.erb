@@ -1,10 +1,13 @@
-<div class="container mt-md-5">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-md-12">
-      <div class="text-center">
-        <h2>すべての投稿</h2>
-        <%= link_to 'New Post', new_post_dog_path %>
-     </div>
+    <div class="col-md-12 col-md-10">
+    <div class="my-2"><%= flash[:alert] %></div>
+      <h2>All POST</h2>
+        <div class="text-right pr-5">
+          <%= link_to new_post_dog_path, class: "btn btn-danger" do %>
+            <i class="fas fa-plus-circle"></i> NEW POST
+          <% end %>
+        </div>
     </div>
   </div>
 
