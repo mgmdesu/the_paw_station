@@ -1,18 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>”<%= @word %>”の検索結果（<%= @walks.count %>件）</h2>
-        <table>
-          <% @walks.each do |walk| %>
-          <tr>
-            <td><%= image_tag walk.get_walk_image, size:'100x100' %></td>
-            <td><%= walk.title %></td>
-            <td><%= walk.opinion %></td>
-            <td><%= walk.dogrun_name %></td>
-            <td><%= link_to '詳しく見る', walk_path(walk) %></td>
-          </tr>
-          <% end %>
-        </table>
-    </div>
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4 w-100">
+    <h4>”<%= @word %>” の検索結果（<%= @walks.count %>件）</h4>
+    <% @walks.each do |walk| %>
+      <div class="col-3 mb-5">
+        <div class="card-img h-100 mt-4 shadow-sm">
+          <%= image_tag walk.get_walk_image, class: "card-img-top img-fluid", style: "height:200px" %>
+          <div class="card-body">
+            <h5 class="card-title text-truncate"><%= walk.title %></h5>
+            <p class="card-text">
+              <i class="fas fa-map-marker-alt"></i> <%= walk.tag.prefecture %>
+            </p>
+            <p class="card-text text-truncate"><%= walk.opinion %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+                <%= walk.user.name %>
+              </small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted"><%= walk.created_at.strftime('%Y/%m/%d') %></small>
+              <span class="float-right">
+              <% if admin_signed_in? %>
+                <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+              <% else %>
+                <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+              <% end %>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
