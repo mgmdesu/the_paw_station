@@ -1,9 +1,5 @@
 <div class="container mt-5">
-  <div class="text-right">
-    <%= link_to new_walk_path, class: "btn btn-secondary" do %>
-      <i class="fas fa-plus-circle"></i> 投稿する
-    <% end %>
-  </div>
+  <div class="my-2"><%= flash[:alert] %></div>
   <%= render 'index', walks: @walks, tag: @tag %>
   <div class="text-center"><%= paginate @walks %></div>
 </div>
