@@ -8,7 +8,7 @@ class Group < ApplicationRecord
     owner.id == user.id
   end 
   
-  def includesUser?(user)
+  def includes_user?(user)
     group_users.exists?(user_id: user.id)
   end 
   

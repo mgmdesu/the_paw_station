@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-7 col-sm-6 mx-auto">
       <h2>Meetup Lists</h2>
-      <div class="text-right pb-2"><%= link_to 'オフ会を作る', new_group_path, class: "btn btn-outline-dark rounded-pill" %></div>
+      <div class="text-right pb-2"><%= link_to 'Create Meetp', new_group_path, class: "btn btn-success" %></div>
         <% @groups.each do |group| %>
           <div class="card mb-3">
             <div class="card-header">
@@ -20,7 +20,7 @@
                   <strong class="text-secondary">CLOSE</strong>
                 <% else %>
                   <strong class="text-success">OPEN</strong>
-                  <span class="float-right"><%= link_to '詳しく見る', group_path(group.id), class: "btn btn-sm btn-outline-secondary" %></p>
+                  <span class="float-right"><%= link_to '詳しく見る', group_path(group.id), class: "btn btn-outline-dark rounded-pill" %></p>
                 <% end %>
               </p>
             </div>
