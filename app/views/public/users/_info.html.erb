@@ -10,12 +10,14 @@
     <p id="followers_count_<%= @user.id %>", class="card-text text-center"><%= render 'public/relationships/followers_counter', user: user %></p>
     <p id="follow_btn_<%= user.id %>", class="card-text text-center"><%= render 'public/relationships/btn', user: @user %></p>
     
-    <% if current_user == user %>
+    <% if current_user == user && user.name != "ゲストユーザー" %>
       <div class="text-center mb-3">
         <%= link_to edit_user_path(user), class: "btn btn-block btn-outline-dark btn-sm" do %>
           <i class="fas fa-edit"></i> 登録情報編集
         <% end %>
       </div>
+    <% end %>
+    <% if current_user == user %>
       <div class="text-center mb-3">
         <%= link_to bookmarks_user_path(@user), class: "btn btn-block btn-outline-dark btn-sm" do %>
           <i class="fas fa-paw"></i> Bookmarks
