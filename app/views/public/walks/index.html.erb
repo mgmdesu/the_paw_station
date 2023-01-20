@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="my-2"><%= flash[:alert] %></div>
+  <%= flash[:alert] %>
   <%= render 'index', walks: @walks, tag: @tag %>
   <div class="text-center"><%= paginate @walks %></div>
 </div>

@@ -2,36 +2,35 @@
   <div class="row  no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h4 class="text-center pt-5">管理者ログイン</h4>
-      <div class="form-body p-4">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+        <div class="form-body p-4">
+          <%= form_with model: @admin, url: admin_session_path do |f| %>
+            <div class="input-group mb-3 mt-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+              </div>
+              <div class="ml-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "user@example.com", class: "form-control" %></div>
             </div>
-            <div class="ml-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "user@example.com", class: "form-control" %></div>
-          </div>
-
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-lock"></i></span>
+  
+            <div class="input-group mb-3 mt-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-lock"></i></span>
+              </div>
+              <div class="ml-3"><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード入力", class: "form-control" %></div>
             </div>
-            <div class="ml-3"><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード入力", class: "form-control" %></div>
-          </div>
-          
-          <% if devise_mapping.rememberable? %>
-            <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
+            
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+  
+            <hr>
+            <%= f.submit "ログイン", class: "btn btn-block btn-success" %>
           <% end %>
 
-          <hr>
-          <%= f.submit "ログイン", class: "btn btn-block btn-success" %>
-        <% end %>
-
-        <div class="mt-2"><%= render "admin/shared/links" %></div>
-      </div>
+          <div class="mt-2"><%= render "admin/shared/links" %></div>
+        </div>
     </div>
   </div>
 </div>

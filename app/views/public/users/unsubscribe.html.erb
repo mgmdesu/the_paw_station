@@ -2,11 +2,11 @@
   <div class="row justify-content-center">
     <div class="mx-auto">
       <p class="text-center"><strong>The Paw Stationを退会</strong></p>
-        <p class="text-center">
-          退会のお手続きをされますと、今まで投稿した内容やブックマークなどが全て消去されます。<br>
-          再度会員としてご利用いただく場合は、新規登録のお手続きが必要になります。<br>
-          本当に退会しますか？
-        </p>
+      <p class="text-center">
+        退会のお手続きをされますと、今まで投稿した内容やブックマークなどが全て消去されます。<br>
+        再度会員としてご利用いただく場合は、新規登録のお手続きが必要になります。<br>
+        本当に退会しますか？
+      </p>
       <div class="text-center">
         <%= link_to 'キャンセル', user_path(current_user), class: "btn btn-outline-dark mr-3" %>
         <%= link_to '退会する', user_withdraw_path(current_user), method: :patch, class: "btn btn-danger" %>

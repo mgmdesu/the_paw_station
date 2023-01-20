@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="my-2"><%= flash[:notice] %></div>
+  <%= flash[:notice] %>
   <div class="row border rounded">
     <div class="col-md-4 mx-auto my-auto">
       <div class="p-4"><%= image_tag @post_dog.get_post_dog_image, size: '350x250' %></div>
@@ -25,6 +25,7 @@
       <div class="pt-3">
         <small><%= @post_dog.created_at.strftime('%Y/%m/%d') %></small>
       </div>
+      <!--いいね/非同期通信化-->
       <div id="favorite_btn_<%= @post_dog.id %>" class="pt-3">
         <%= render 'favorite', post_dog: @post_dog %>
       </div>
@@ -38,8 +39,8 @@
     </div>
   </div>
   
+  <!--コメント/投稿・一覧-->
   <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h5>
-    <!--コメント-->
     <%= render 'comment', post_dog: @post_dog, post_comment: @post_comment %>
     
   <div class="text-center">

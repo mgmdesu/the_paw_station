@@ -4,42 +4,36 @@
       <h5 class="text-center mt-5">Meetup's Edit Detail</h5>
       <div class="form-body p-4">
         <%= form_with model: @group, url: admin_group_path do |f| %>
-        
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-users"></i></span>
             </div>
-            <div class="ml-3"><%= @group.group_name %>
-              <%#= f.text_field :group_name, autofocus: true, placeholder: "グループ名", class: "form-control" %></div>
+            <div class="ml-3"><%= @group.group_name %></div>
           </div>
           
           <div class="input-group mb-3 mt-4">
             <%= @group.explanation %>
-            <%#= f.text_area :explanation, placeholder: "詳細を記入する", class: "form-control" %>
           </div>
         
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-calendar-alt"></i></span>
             </div>
-            <div class="ml-3"><%= @group.event_date.strftime("%Y年%m月%d日") %>
-              <%#= f.date_field :event_date, min: Time.zone.now, class: "form-control" %></div>
+            <div class="ml-3"><%= @group.event_date.strftime("%Y年%m月%d日") %></div>
           </div>
           
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-clock"></i></span>
             </div>
-            <div class="ml-3"><%= @group.start_at.strftime("%H時%M分") %>
-              <%#= f.time_field :start_at, class: "form-control" %></div>
+            <div class="ml-3"><%= @group.start_at.strftime("%H時%M分") %></div>
           </div>
           
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-map-pin"></i></span>
             </div>
-            <div class="ml-3"><%= @group.location %>
-              <%#= f.text_field :location, placeholder: "開催場所", class: "form-control" %></div>
+            <div class="ml-3"><%= @group.location %></div>
           </div>
           
           <div class="input-group mb-3 mt-4">
