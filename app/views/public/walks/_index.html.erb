@@ -1,24 +1,22 @@
 <div class="row">
-  <div class="mb-5">
+  <div class="mb-4">
     <% if params[:tag_id] %>
-      <h2><%= tag.prefecture %>の検索結果</h2>
+      <h2>"<%= tag.prefecture %>" の検索結果</h2>
     <% else %>
-      <h2>すべての散歩情報</h2>
+      <h2>All Post to Walk</h2>
     <% end %>
   </div>
 </div>
 
-<div class="row mb-5">
-  <div>
-    <%= form_with url: walks_path , method: :get do |f| %>
+<div class="row">
+    <%= form_with url: walks_path, method: :get do |f| %>
       <%= f.select :tag_id, Tag.pluck(:prefecture, :id), :selected => params[:tag_id] %>
-      <%= f.submit '検索する', class: "btn btn-info" %>
+      <%= f.submit '検索', class: "btn btn-sm btn-outline-info" %>
     <% end %>
-  </div>
     
-  <div>
+  <div class="pl-5">
     <%= form_with url: search_path, locul: true, method: :get, class: "d-flex border border-secondary rounded" do |f| %>
-      <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力", style: "width: 100%; border: none;" %>
+      <%= f.text_field :word, class: "form-control form-control-sm", placeholder: "キーワードを入力", style: "border: none;" %>
       <%= button_tag class: "", type: "submit", style: "border: none;" do %>
         <i class="fas fa-search"></i>
       <% end %>
@@ -26,12 +24,18 @@
   </div>
 </div>
 
+<div class="text-right pr-5">
+  <%= link_to new_walk_path, class: "btn btn-warning" do %>
+    <i class="fas fa-plus-circle"></i> NEW POST
+  <% end %>
+</div>
+
 <div class="row row-cols-1 row-cols-md-3 g-4 w-100">
   <% if walks.first %>
     <% walks.each do |walk| %>
       <div class="col mb-5">
         <div class="card h-100 mt-4 shadow-sm">
-          <%= image_tag walk.get_walk_image , size: '300x200', class: "card-img-top" %>
+          <%= image_tag walk.get_walk_image , class: "card-img-top img-fluid", style: "height:200px" %>
           <div class="card-body">
             <h5 class="card-title text-truncate"><%= walk.title %></h5>
             <p class="card-text">
