@@ -42,8 +42,8 @@
               <td><i class="fas fa-user"></i></td>
               <td>
                 <%= link_to user_path(@walk.user.id) do %>
-                  <%= image_tag @walk.user.get_profile_image, size: '30x30', class: "rounded-circle" %>@
-                  <%= @walk.user.name %>
+                  <%= image_tag @walk.user.get_profile_image, size: '30x30', class: "rounded-circle" %>
+                  @ <%= @walk.user.name %>
                 <% end %>
               </td>
             </tr>

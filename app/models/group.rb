@@ -18,7 +18,7 @@ class Group < ApplicationRecord
     (group_image.attached?) ? group_image: 'no_image.png'
   end
   
-  validates :group_name, presence: true
+  validates :group_name, length: { minimum: 1, maximum: 25 }
   validates :explanation, presence: true
   validates :event_date, presence: true
   validates :start_at, presence: true

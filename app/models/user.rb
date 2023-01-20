@@ -42,7 +42,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  validates :name, presence: true, uniqueness: true
+  validates :name, length: { minimum: 2, maximum: 15 }, uniqueness: true
   validates :email, presence: true, uniqueness: true
   
   #退会済みのユーザーが同アカウントでログイン不可の制約

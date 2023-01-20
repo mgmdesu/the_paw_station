@@ -15,7 +15,7 @@ class PostDog < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
-  validates :body, presence: true
+  validates :body, length: { minimum: 1, maximum: 300 }
   validates :post_dog_image, presence: true
   
 end
