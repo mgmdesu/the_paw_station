@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-7 col-sm-6 mx-auto">
-      <h2>Meetup Detail</h2>
-        <div class="card">
+    <h2>Meetup Detail</h2>
+      <div class="col-md-9 col-sm-10 mx-auto mt-5">
+        <div class="card w-75">
           <div class="card-header">
             <strong>
               <%= image_tag @group.get_group_image, size: '40x40', class: "rounded-circle" %>
@@ -13,6 +13,7 @@
             <p class="card-text">開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></p>
             <p class="card-text">開催場所：<%= @group.location %></p>
             <p class="card-text"><%= @group.explanation %></p>
+            <p class="card-text">主催者： @<%= @group.owner.name %></p>
             <p class="card-text">参加予定メンバー：
               <% @group.users.each do |user| %>
                 <li style="list-style: none;">@ <%= user.name %></li>
