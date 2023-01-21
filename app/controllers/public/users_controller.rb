@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @post_dogs = @user.post_dogs
+    @post_dogs = @user.post_dogs.reverse_order
   end
 
   def edit

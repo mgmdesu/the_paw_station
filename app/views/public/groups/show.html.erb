@@ -21,8 +21,7 @@
             </p>
             <p class="text-right">
               <% if @group.is_owned_by?(current_user) %>
-                <%= link_to '戻る', groups_path, class: "btn btn-outline-secondary" %>
-                <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-outline-success" %>
+                <%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-success" %>
               <% elsif @group.includes_user?(current_user) %>
                 <%= link_to '退会する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-outline-danger" %>
               <% else %>
@@ -31,9 +30,9 @@
             </p>
           </div>
         </div>
-        <div class="text-center mt-5">
-          <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', groups_path, class: "btn btn-default-v3" %>
-        </div>
+      </div>
+      <div class="mx-auto mt-5">
+        <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', groups_path, class: "btn btn-default-v3" %>
       </div>
   </div>
 </div>

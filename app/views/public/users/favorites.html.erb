@@ -18,8 +18,8 @@
           <% @favorite_dogs.each do |post_dog| %>
             <tr>
               <td class="pt-3 pr-4 text-wrap">
-                <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
-                <%= post_dog.user.name %>
+                <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+                @ <%= post_dog.user.name %>
               </td>
               <td class="pt-3 pr-4 text-wrap"><%= post_dog.body %></td>
               <td class="pt-3 pr-1"><%= link_to 'Show', post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-info" %></td>
