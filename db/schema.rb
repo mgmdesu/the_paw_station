@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
   create_table "groups", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.string "group_name", default: "", null: false
-    t.text "explanation", default: "", null: false
+    t.text "explanation", null: false
     t.date "event_date", null: false
     t.time "start_at", null: false
     t.string "location", default: "", null: false
@@ -88,14 +88,14 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
   create_table "post_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_dog_id", null: false
-    t.text "dog_comment", default: "", null: false
+    t.text "dog_comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_dogs", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.text "body", default: "", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
   create_table "walk_comments", force: :cascade do |t|
     t.integer "walk_id", null: false
     t.integer "user_id", null: false
-    t.text "walk_comment", default: "", null: false
+    t.text "walk_comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_150947) do
   create_table "walks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", default: "", null: false
-    t.text "opinion", default: "", null: false
+    t.text "opinion", null: false
     t.string "dogrun_name"
     t.integer "facility", default: 0, null: false
     t.integer "size", default: 0, null: false

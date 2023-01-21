@@ -3,7 +3,7 @@ class CreatePostDogs < ActiveRecord::Migration[6.1]
     create_table :post_dogs do |t|
       
       t.integer :user_id, null: false, default: ""
-      t.text    :body,    null: false, default: ""
+      t.text    :body,    null: false
 
       t.timestamps
     end
