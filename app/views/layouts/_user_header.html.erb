@@ -14,6 +14,15 @@
   <li class="nav-item mr-3 text-nowrap">
     <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn" %>
   </li>
+  <!--検索フォーム-->
+  <div class="col-md-3">
+    <%= form_with url: search_path, locul: true, method: :get, class: "d-flex border border-secondary rounded" do |f| %>
+      <%= f.text_field :word, class: "form-control", placeholder: "Search", style: "width: 100%; border: none;" %>
+        <%= button_tag class: "", type: "submit", style: "border: none;" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </div>
 <% else %>
   <li class="nav-item mr-3 text-nowrap">
     <%= link_to 'About', about_path, class: "btn" %>
@@ -30,15 +39,7 @@
   <li class="nav-item mr-3 text-nowrap">
     <%= link_to 'Sign up', new_user_registration_path, class: "btn" %>
   </li>
+  <li clss="nav-item mr-auto text-nowrap">
+    <%= link_to 'Admin', new_admin_session_path, class: "btn" %>
+  </li>
 <% end %>
-
-<!--検索フォーム-->
-<div class="col-md-3">
-<%= form_with url: search_path, locul: true, method: :get, class: "d-flex border border-secondary rounded" do |f| %>
-  <%= f.text_field :word, class: "form-control", placeholder: "Search", style: "width: 100%; border: none;" %>
-    <%= button_tag class: "", type: "submit", style: "border: none;" do %>
-    <i class="fas fa-search"></i>
-  <% end %>
-<% end %>
-</div>
-

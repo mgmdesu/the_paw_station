@@ -45,21 +45,20 @@
   
 <div class="container mt-5">
   <h4><i class="fas fa-dog"></i> 新着投稿</h4>
-  <div class="card-deck">
-    <div class="row" style="width: 100%;">
-      <% @new_3_walks.each do |walk| %>
-        <div class="card h-100 mt-4 shadow-sm">
-          <%= image_tag walk.get_walk_image, class: "bd-placeholder-img card-img-top", style: "height:200px" %>
+  <div class="row row-cols-md-3 g-4 w-100">
+    <% @new_3_walks.each do |walk| %>
+      <div class="col-3 mb-5">
+        <div class="card-img h-100 mt-4 shadow-sm">
+          <%= image_tag walk.get_walk_image, class: "card-img-top img-fluid", style: "height:200px" %>
             <div class="card-body">
               <h5 class="card-title"><%= walk.title %></h5>
               <p class="card-text text-truncate"><%= walk.opinion %></p>
               <p class="card-text"><%= walk.created_at.strftime('%Y/%m/%d') %></p>
             </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-  
   <div class="row my-5 pr-3">
     <%= link_to 'すべての情報をみる', walks_path, class: "ml-auto btn btn-outline-dark rounded-pill" %>
   </div>
