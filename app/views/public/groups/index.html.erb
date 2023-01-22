@@ -8,27 +8,29 @@
           <% end %>
         </div>
         <% @groups.each do |group| %>
-          <div class="card mb-3">
-            <div class="card-header">
-              <strong>
-                <%= image_tag group.get_group_image, size: '40x40', class: "rounded-circle" %>
-                <%= group.group_name %>
-              </strong>
+          <% if group.owner.is_deleted == false %>
+            <div class="card mb-3">
+              <div class="card-header">
+                <strong>
+                  <%= image_tag group.get_group_image, size: '40x40', class: "rounded-circle" %>
+                  <%= group.group_name %>
+                </strong>
+              </div>
+              <div class="card-body">
+                <p class="card-text">開催日時：<%= group.event_date.strftime("%Y年%m月%d日") %> <%= group.start_at.strftime("%H時%M分") %></p>
+                <p class="card-text">開催場所：<%= group.location %></p>
+                <p class="card-text text-truncate"><%= group.explanation %></p>
+                <p class="card-text">
+                  <% if group.is_deleted %>
+                    <strong class="text-secondary">CLOSE</strong>
+                  <% else %>
+                    <strong class="text-success">OPEN</strong>
+                    <span class="float-right"><%= link_to '詳しく見る', group_path(group.id), class: "btn btn-outline-dark rounded-pill" %></p>
+                  <% end %>
+                </p>
+              </div>
             </div>
-            <div class="card-body">
-              <p class="card-text">開催日時：<%= group.event_date.strftime("%Y年%m月%d日") %> <%= group.start_at.strftime("%H時%M分") %></p>
-              <p class="card-text">開催場所：<%= group.location %></p>
-              <p class="card-text text-truncate"><%= group.explanation %></p>
-              <p class="card-text">
-                <% if group.is_deleted %>
-                  <strong class="text-secondary">CLOSE</strong>
-                <% else %>
-                  <strong class="text-success">OPEN</strong>
-                  <span class="float-right"><%= link_to '詳しく見る', group_path(group.id), class: "btn btn-outline-dark rounded-pill" %></p>
-                <% end %>
-              </p>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       <%= paginate @groups %>
     </div>

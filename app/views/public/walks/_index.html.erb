@@ -13,7 +13,7 @@
     <%= f.select :tag_id, Tag.pluck(:prefecture, :id), :selected => params[:tag_id] %>
     <%= f.submit '検索', class: "btn btn-sm btn-outline-info" %>
   <% end %>
-    
+
   <div class="pl-5">
     <%= form_with url: search_path, locul: true, method: :get, class: "d-flex border border-secondary rounded" do |f| %>
       <%= f.text_field :word, class: "form-control form-control-sm", placeholder: "キーワードを入力", style: "border: none;" %>
@@ -25,42 +25,46 @@
 </div>
 
 <div class="text-right pr-5">
-  <%= link_to new_walk_path, class: "btn btn-warning" do %>
-    <i class="fas fa-plus-circle"></i> NEW POST
+  <% if user_signed_in? %>
+    <%= link_to new_walk_path, class: "btn btn-warning" do %>
+      <i class="fas fa-plus-circle"></i> NEW POST
+    <% end %>
   <% end %>
 </div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4 w-100">
   <% if walks.first %>
     <% walks.each do |walk| %>
-      <div class="col mb-5">
-        <div class="card h-100 mt-4 shadow-sm">
-          <%= image_tag walk.get_walk_image , class: "card-img-top img-fluid", style: "height:200px" %>
-            <div class="card-body">
-              <h5 class="card-title text-truncate"><%= walk.title %></h5>
-              <p class="card-text">
-                <i class="fas fa-map-marker-alt"></i> <%= walk.tag.prefecture %>
-              </p>
-              <p class="card-text text-truncate"><%= walk.opinion %></p>
-              <p class="card-text">
-                <small class="text-muted">
-                  <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
-                  <%= walk.user.name %>
-                </small>
-              </p>
-              <p class="card-text">
-                <small class="text-muted"><%= walk.created_at.strftime('%Y/%m/%d') %></small>
-                <span class="float-right">
-                <% if admin_signed_in? %>
-                  <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
-                <% else %>
-                  <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
-                <% end %>
-                </span>
-              </p>
-            </div>
+      <% if walk.user.is_deleted == false %>
+        <div class="col mb-5">
+          <div class="card h-100 mt-4 shadow-sm">
+            <%= image_tag walk.get_walk_image , class: "card-img-top img-fluid", style: "height:200px" %>
+              <div class="card-body">
+                <h5 class="card-title text-truncate"><%= walk.title %></h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> <%= walk.tag.prefecture %>
+                </p>
+                <p class="card-text text-truncate"><%= walk.opinion %></p>
+                <p class="card-text">
+                  <small class="text-muted">
+                    <%= image_tag walk.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+                    <%= walk.user.name %>
+                  </small>
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"><%= walk.created_at.strftime('%Y/%m/%d') %></small>
+                  <span class="float-right">
+                    <% if admin_signed_in? %>
+                      <%= link_to '詳細を見る', admin_walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+                    <% else %>
+                      <%= link_to '詳細を見る', walk_path(walk.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+                    <% end %>
+                  </span>
+                </p>
+              </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% else %>
     <h4 class="text-center">まだ投稿されていません</h4>

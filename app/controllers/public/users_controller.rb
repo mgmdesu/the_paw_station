@@ -26,8 +26,8 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
-    user = User.find(params[:id])
-    user.update(is_deleted: true)
+    @user = current_user
+    @user.update(is_deleted: true)
     reset_session
     flash[:alert] = "退会のお手続きが完了しました"
     redirect_to root_path
@@ -37,7 +37,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:walk_id)
     @bookmark_walks = Walk.find(bookmarks)
-  end 
+  end
   
   def favorites
     @user = User.find(params[:id])

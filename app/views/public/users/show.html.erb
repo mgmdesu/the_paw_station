@@ -6,35 +6,41 @@
     </div>
     
     <div class='col-md-8 col-sm-10 offset-1'>
-      <h2><%= @user.name %>'s Dog</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-sm-1 g-4 w-100">
-          <% @post_dogs.each do |post_dog| %>
-            <div class="col-3 mb-5">
-              <div class="card-img h-100 mt-4 shadow-sm">
-                <%= image_tag post_dog.get_post_dog_image, class: "card-img-top img-fluid", style: "height:200px" %>
-                <div class="card-body">
-                  <p class="card-text">
-                    <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
-                    <%= post_dog.user.name %>
-                  </p>
-                  <p class="card-text"><%= post_dog.body %></p>
-                  <p class="card-text">
-                    <small class="text-muted">
-                      <%= post_dog.created_at.strftime('%Y/%m/%d') %>
-                    </small>
-                    <span class="float-right">
-                      <% if admin_signed_in? %>
-                        <%= link_to '詳細を見る', admin_post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
-                      <% else %>
-                        <%= link_to '詳細を見る', post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
-                      <% end %>
-                    </span>
-                  </p>
-                </div>
+      <% if @user.is_deleted == false %>
+        <h2><%= @user.name %>'s Dog</h2>
+      <% else %>
+        退会したユーザーのため表示できません
+      <% end %>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-sm-1 g-4 w-100">
+        <% @post_dogs.each do |post_dog| %>
+          <% if post_dog.user.is_deleted == false %>
+          <div class="col-3 mb-5">
+            <div class="card-img h-100 mt-4 shadow-sm">
+              <%= image_tag post_dog.get_post_dog_image, class: "card-img-top img-fluid", style: "height:200px" %>
+              <div class="card-body">
+                <p class="card-text">
+                  <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
+                  <%= post_dog.user.name %>
+                </p>
+                <p class="card-text"><%= post_dog.body %></p>
+                <p class="card-text">
+                  <small class="text-muted">
+                    <%= post_dog.created_at.strftime('%Y/%m/%d') %>
+                  </small>
+                  <span class="float-right">
+                    <% if admin_signed_in? %>
+                      <%= link_to '詳細を見る', admin_post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+                    <% else %>
+                      <%= link_to '詳細を見る', post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-dark rounded-pill" %>
+                    <% end %>
+                  </span>
+                </p>
               </div>
             </div>
+          </div>
           <% end %>
-        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

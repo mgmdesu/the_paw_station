@@ -1,49 +1,53 @@
 <div class="container mt-5">
   <%= flash[:notice] %>
-  <div class="row border rounded">
-    <div class="col-md-4 mx-auto my-auto">
-      <div class="p-4"><%= image_tag @post_dog.get_post_dog_image, size: '350x250' %></div>
-    </div>
-
-    <div class="col-md-6 offset-md-1 pt-5">
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to user_path(@post_dog.user.id) do %>
-                <%= image_tag @post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-                @ <%= @post_dog.user.name %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td><%= @post_dog.body %></td>
-          </tr>
-        </tbody>
-      </table>
-        
-      <div class="pt-3">
-        <small><%= @post_dog.created_at.strftime('%Y/%m/%d') %></small>
+  <% if @post_dog.user.is_deleted == false %>
+    <div class="row border rounded">
+      <div class="col-md-4 mx-auto my-auto">
+        <div class="p-4"><%= image_tag @post_dog.get_post_dog_image, size: '350x250' %></div>
       </div>
-      <!--いいね/非同期通信化-->
-      <div id="favorite_btn_<%= @post_dog.id %>" class="pt-3">
-        <%= render 'favorite', post_dog: @post_dog %>
-      </div>
-
-      <div class="text-right">
-        <% if @post_dog.user == current_user %>
-          <span class="pr-3"><%= link_to '編集', edit_post_dog_path(@post_dog.id), class: "btn btn-info" %></span>
-          <span class="pr-3"><%= link_to '削除', @post_dog, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></span>
-        <% end %>
-      </div>
-    </div>
-  </div>
   
-  <!--コメント/投稿・一覧-->
-  <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h5>
-    <%= render 'comment', post_dog: @post_dog, post_comment: @post_comment %>
+      <div class="col-md-6 offset-md-1 pt-5">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@post_dog.user.id) do %>
+                  <%= image_tag @post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+                  @ <%= @post_dog.user.name %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= @post_dog.body %></td>
+            </tr>
+          </tbody>
+        </table>
+          
+        <div class="pt-3">
+          <small><%= @post_dog.created_at.strftime('%Y/%m/%d') %></small>
+        </div>
+        <!--いいね/非同期通信化-->
+        <div id="favorite_btn_<%= @post_dog.id %>" class="pt-3">
+          <%= render 'favorite', post_dog: @post_dog %>
+        </div>
+  
+        <div class="text-right">
+          <% if @post_dog.user == current_user %>
+            <span class="pr-3"><%= link_to '編集', edit_post_dog_path(@post_dog.id), class: "btn btn-info" %></span>
+            <span class="pr-3"><%= link_to '削除', @post_dog, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
     
-  <div class="text-center">
-    <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', post_dogs_path, class: "btn btn-default-v3" %>
-  </div>
+    <!--コメント/投稿・一覧-->
+    <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h5>
+      <%= render 'comment', post_dog: @post_dog, post_comment: @post_comment %>
+      
+    <div class="text-center">
+      <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', post_dogs_path, class: "btn btn-default-v3" %>
+    </div>
+  <% else %>
+    <div class="text-center">退会したユーザーのため表示できません</div>
+  <% end %>
 </div>
