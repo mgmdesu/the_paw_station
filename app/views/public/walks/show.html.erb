@@ -2,11 +2,11 @@
   <%= flash[:notice] %>
   <% if @walk.user.is_deleted == false %>
     <div class="row border rounded">
-      <div class="col-md-3 mx-auto my-auto">
-        <%= image_tag @walk.get_walk_image, size: '380x280' %>
+      <div class="col-md-3 col-sm-10 mx-auto my-auto">
+        <%= image_tag @walk.get_walk_image, size: '380x280', class: "img-fluid" %>
       </div>
           
-      <div class="col-md-7 offset-1">
+      <div class="col-md-7 col-sm-10 offset-1">
         <h5 class="mt-4">Information</h5>
           <!--ブックマーク/非同期通信化-->
           <div id="bookmark_btn_<%= @walk.id %>" class="text-right">
@@ -62,12 +62,16 @@
     
     <!--コメント/投稿・一覧-->
     <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h5>
-      <%= render 'comment', walk: @walk, walk_comment: @walk_comment %>
+      <%= render 'walk_comment', walk: @walk, walk_comment: @walk_comment %>
       
     <div class="text-center">
       <i class="fas fa-th-list"></i><%= link_to '一覧に戻る', walks_path, class: "btn btn-default-v3" %>
     </div>
   <% else %>
     <div class="text-center">退会したユーザーのため表示できません</div>
+    
+    <div class="text-center">
+      <i class="fas fa-th-list"></i><%= link_to '一覧に戻る', walks_path, class: "btn btn-default-v3" %>
+    </div>
   <% end %>
 </div>

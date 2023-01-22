@@ -2,11 +2,11 @@
   <%= flash[:notice] %>
   <% if @post_dog.user.is_deleted == false %>
     <div class="row border rounded">
-      <div class="col-md-4 mx-auto my-auto">
-        <div class="p-4"><%= image_tag @post_dog.get_post_dog_image, size: '350x250' %></div>
+      <div class="col-md-4 col-sm-10 mx-auto my-auto">
+        <div class="p-4"><%= image_tag @post_dog.get_post_dog_image, size: '350x250', class: "img-fluid" %></div>
       </div>
   
-      <div class="col-md-6 offset-md-1 pt-5">
+      <div class="col-md-6 col-sm-10 offset-md-1 pt-5">
         <table>
           <tbody>
             <tr>
@@ -33,8 +33,8 @@
   
         <div class="text-right">
           <% if @post_dog.user == current_user %>
-            <span class="pr-3"><%= link_to '編集', edit_post_dog_path(@post_dog.id), class: "btn btn-info" %></span>
-            <span class="pr-3"><%= link_to '削除', @post_dog, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></span>
+            <span class="pr-3 pb-3"><%= link_to '編集', edit_post_dog_path(@post_dog.id), class: "btn btn-info" %></span>
+            <span class="pr-3 pb-3"><%= link_to '削除', @post_dog, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %></span>
           <% end %>
         </div>
       </div>
@@ -42,7 +42,7 @@
     
     <!--コメント/投稿・一覧-->
     <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h5>
-      <%= render 'comment', post_dog: @post_dog, post_comment: @post_comment %>
+      <%= render 'dog_comment', post_dog: @post_dog, post_comment: @post_comment %>
       
     <div class="text-center">
       <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', post_dogs_path, class: "btn btn-default-v3" %>
