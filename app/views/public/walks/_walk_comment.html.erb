@@ -31,8 +31,12 @@
             <small class="text-muted">
               <%= walk_comment.created_at.strftime('%Y/%m/%d') %>
             </small>
+          </p>
+          <p class="card-text text-right">
             <% if walk_comment.user == current_user %>
-              <%= link_to '削除', walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+              <%= link_to walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
+                削除 <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           </p>
         </div>
