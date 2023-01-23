@@ -23,7 +23,7 @@
               <% if @group.is_owned_by?(current_user) %>
                 <%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-success" %>
               <% elsif @group.includes_user?(current_user) %>
-                <%= link_to '退会する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-outline-danger" %>
+                <%= link_to '退会する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
               <% else %>
                 <%= link_to '参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success" %>
               <% end %>
