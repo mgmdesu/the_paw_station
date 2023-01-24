@@ -37,8 +37,16 @@ header {
   border-radius: 25px;
 }
 
-main .about {
+main .top-title {
   font-family: 'Ubuntu', sans-serif;
+}
+
+.about {
+  width: 200px;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 1rem 2rem;
+  border-left: 10px solid #f39800;
+  background: #f2d58a;
 }
 
 .box1 {
@@ -117,6 +125,60 @@ main .about {
 .box3 p {
     margin: 0; 
     padding: 0;
+}
+
+.doggies-title {
+  font-family: 'Ubuntu', sans-serif;
+  width: 240px;
+  padding: 1rem 2rem;
+  border-top: 3px solid #f19ca7;
+  border-bottom: 3px solid #f19ca7;
+}
+
+.doggies-detail {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #f5b2b2;
+    border-radius: 8px;
+}
+
+.doggies-comment {
+  border: none;
+}
+
+.walk-title {
+  font-family: 'Ubuntu', sans-serif;
+  width: 280px;
+  padding: 1rem 2rem;
+  border-top: 3px solid #fdd35c;
+  border-bottom: 3px solid #fdd35c;
+}
+
+.walk-detail {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #fdd35c;
+  border-radius: 8px;
+}
+
+.walk-comment {
+  border: none;
+}
+
+.meetup-title {
+  font-family: 'Ubuntu', sans-serif;
+  width: 240px;
+  padding: 1rem 2rem;
+  border-top: 3px solid #79c06e;
+  border-bottom: 3px solid #79c06e;
+}
+
+.meetup-detail {
+  font-family: 'Ubuntu', sans-serif;
+  width: 300px;
+  padding: 1rem 2rem;
+  border-top: 3px solid #79c06e;
+  border-bottom: 3px solid #79c06e;
 }
 
 .pagination {

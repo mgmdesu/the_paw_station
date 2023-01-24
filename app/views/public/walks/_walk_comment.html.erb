@@ -1,4 +1,4 @@
-<div class="row no-gutters rounded">
+<div class="row no-gutters">
   <div class="col-md-4 col-sm-10">
     <div class="form-body p-4">
       <% if user_signed_in? %>
@@ -18,7 +18,7 @@
 
   <div class="col-md-7 col-sm-10 offset-1">
     <% walk.walk_comments.each do |walk_comment| %>
-      <div class="card w-75 mb-4">
+      <div class="walk-comment card w-75 mb-4">
         <div class="card-body">
           <p class="card-text">
             <%= link_to user_path(walk_comment.user.id) do %>
@@ -28,19 +28,21 @@
           </p>
           <p class="card-text text-wrap"><%= walk_comment.walk_comment %></p>
           <p class="card-text">
-            <small class="text-muted">
+            <span class="mr-3">
+              <small class="text-muted">
               <%= walk_comment.created_at.strftime('%Y/%m/%d') %>
-            </small>
-          </p>
-          <p class="card-text text-right">
-            <% if walk_comment.user == current_user %>
-              <%= link_to walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
-                削除 <i class="fas fa-trash-alt"></i>
+              </small>
+            </span>
+            <span>
+              <% if walk_comment.user == current_user %>
+                <%= link_to walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
+                  削除 <i class="fas fa-trash-alt"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          </p>
+            </span>
         </div>
       </div>
     <% end %>
+    <hr>
   </div>
 </div>
