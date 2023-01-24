@@ -9,16 +9,114 @@
 }
 
 header {
-  background-color: #a2c2e6;
+  background-color: #68a4d9;
 }
 
-header .navbar-brand {
+.navbar-brand {
   font-family: 'Ubuntu', sans-serif;
   font-size: 25px;
 }
 
+.nav-item1 {
+  background-color: #f19ca7;
+  border-radius: 25px;
+}
+
+.nav-item2 {
+  background-color: #fdd35c;
+  border-radius: 25px;
+}
+
+.nav-item3 {
+  background-color: #79c06e;
+  border-radius: 25px;
+}
+
+.nav-item4 {
+  background-color: #00afcc;
+  border-radius: 25px;
+}
+
 main .about {
   font-family: 'Ubuntu', sans-serif;
+}
+
+.box1 {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #fdd35c;
+    border-radius: 8px;
+}
+
+.box1 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #fcc800;
+    font-weight: bold;
+}
+
+.box1 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box2 {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #79c06e;
+    border-radius: 8px;
+}
+
+.box2 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #79c06e;
+    font-weight: bold;
+}
+
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box3 {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #f19ca7;
+    border-radius: 8px;
+}
+
+.box3 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #f19ca7;
+    font-weight: bold;
+}
+
+.box3 p {
+    margin: 0; 
+    padding: 0;
 }
 
 .pagination {
@@ -26,5 +124,5 @@ main .about {
 }
 
 footer {
-  background-color: #a2c2e6;
+  background-color: #68a4d9;
 }

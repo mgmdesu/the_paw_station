@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
-    <h2 class="pl-5">Meetup Lists</h2>
-      <div class="col-md-7 col-sm-10 mx-auto mt-5">
+    <div class="col-md-7 col-sm-10 mx-auto">
+      <h2 class="pb-2">All Meetup</h2>
         <% @groups.each do |group| %>
           <% if group.owner.is_deleted == false %>
             <div class="card mb-3">
@@ -20,7 +20,7 @@
                     <strong class="text-secondary">CLOSE</strong>
                   <% else %>
                     <strong class="text-success">OPEN</strong>
-                    <span class="float-right"><%= link_to '詳細へ', admin_group_path(group.id), class: "btn btn-sm btn-outline-secondary" %></span>
+                    <span class="float-right"><%= link_to '詳しく見る', admin_group_path(group.id), class: "btn btn-outline-dark rounded-pill" %></span>
                   <% end %>
                 </p>
               </div>

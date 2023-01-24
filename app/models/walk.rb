@@ -20,7 +20,7 @@ class Walk < ApplicationRecord
   enum size: { small_dog: 0, medium_size_dog: 1, large_size_dog: 2 }
   
   validates :title, length: { minimum: 1, maximum: 20 }
-  validates :opinion, length: { minimum: 1, maximum: 200 }
+  validates :opinion, length: { minimum: 1, maximum: 300 }
   validates :facility, presence: true
   validates :size, presence: true
   
