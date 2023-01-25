@@ -1,11 +1,10 @@
 <div class="container mt-5 px-sm-0">
+  <%= render "public/shared/error_messages", resource: resource %>
   <div class="row  no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h4 class="text-center pt-5">The Paw Stationに会員登録</h4>
         <div class="form-body p-4">
           <%= form_with model: @user, url: user_registration_path do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
-          
             <div class="input-group mb-3 mt-4">
               <div class="input-group-prepend">
                 <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-user"></i></span>

@@ -1,10 +1,10 @@
 <div class="container mt-5">
+  <%= render "layouts/errors", obj: @group %>
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-3" >
       <h5 class="text-center mt-5">Meetup Detail Edit</h5>
         <div class="form-body p-4">
           <%= form_with model: @group, url: group_path do |f| %>
-    
             <div class="input-group mb-3 mt-4">
               <div class="input-group-prepend">
                 <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-users"></i></span>
@@ -12,7 +12,7 @@
               <div class="ml-3"><%= f.text_field :group_name, autofocus: true, placeholder: "グループ名", class: "form-control" %></div>
             </div>
             
-            <div class="input-group mb-3 mt-4">
+            <div class="mb-3 mt-4">
               <%= f.text_area :explanation, placeholder: "詳細を記入する", class: "form-control" %>
             </div>
             

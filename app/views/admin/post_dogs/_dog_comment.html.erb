@@ -1,7 +1,7 @@
-<div class="row no-gutters rounded">
+<div class="row no-gutters">
   <div class="col-md-7 col-sm-10">
     <% post_dog.post_comments.each do |post_comment| %>
-      <div class="card w-75 mb-4">
+      <div class="doggies-comment card w-75 mb-4">
         <div class="card-body">
           <p class="card-text">
             <%= image_tag post_comment.user.get_profile_image, size: '40x40', class: "rounded-circle" %>@
@@ -18,6 +18,7 @@
           </p>
         </div>
       </div>
+      <hr>
     <% end %>
   </div>
 </div>

@@ -6,27 +6,27 @@
     
     <div class='col-md-8 col-sm-10 offset-1'>
       <h3 class="mt-3"><i class="fas fa-heart"></i> Favorites</h3>
-      <table class="my-3">
-        <thead class="border-bottom">
-          <tr>
-            <th>UserName</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="mt-2">
-          <% @favorite_dogs.each do |post_dog| %>
+        <table class="my-3">
+          <thead class="border-bottom">
             <tr>
-              <td class="pt-3 pr-4 text-wrap">
-                <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
-                @ <%= post_dog.user.name %>
-              </td>
-              <td class="pt-3 pr-4 text-wrap"><%= post_dog.body %></td>
-              <td class="pt-3 pr-1"><%= link_to 'Show', post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-info" %></td>
+              <th>UserName</th>
+              <th></th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="mt-2">
+            <% @favorite_dogs.each do |post_dog| %>
+              <tr>
+                <td class="pt-3 pr-4 text-wrap">
+                  <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %>
+                  @ <%= post_dog.user.name %>
+                </td>
+                <td class="pt-3 pr-4 text-wrap"><%= post_dog.body %></td>
+                <td class="pt-3 pr-1"><%= link_to 'Show', post_dog_path(post_dog.id), class: "btn btn-sm btn-outline-info" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

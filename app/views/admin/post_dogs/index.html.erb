@@ -1,9 +1,10 @@
 <div class="container mt-5">
+  <%= flash[:alert] %>
   <div class="row">
     <div class="col-md-12">
-      <h2>All Doggies</h2>
+      <h2 class="doggies-title">All Doggies</h2>
       <%= render 'public/post_dogs/index', post_dogs: @post_dogs %>
-      <div class="text-center"><%= paginate @post_dogs %></div>
+      <%= paginate @post_dogs %>
     </div>
   </div>
 </div>

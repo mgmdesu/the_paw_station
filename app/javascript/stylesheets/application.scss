@@ -42,14 +42,14 @@ main .top-title {
 }
 
 .about {
-  width: 200px;
   font-family: 'Ubuntu', sans-serif;
+  width: 200px;
   padding: 1rem 2rem;
-  border-left: 10px solid #f39800;
-  background: #f2d58a;
+  border-top: 3px solid #f39800;
+  border-bottom: 3px solid #f39800;
 }
 
-.box1 {
+.about-box1 {
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
@@ -57,7 +57,7 @@ main .top-title {
     border-radius: 8px;
 }
 
-.box1 .box-title {
+.about-box1 .box-title {
     position: absolute;
     display: inline-block;
     top: -13px;
@@ -70,12 +70,12 @@ main .top-title {
     font-weight: bold;
 }
 
-.box1 p {
+.about-box1 p {
     margin: 0; 
     padding: 0;
 }
 
-.box2 {
+.about-box2 {
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
@@ -83,7 +83,7 @@ main .top-title {
     border-radius: 8px;
 }
 
-.box2 .box-title {
+.about-box2 .box-title {
     position: absolute;
     display: inline-block;
     top: -13px;
@@ -96,12 +96,12 @@ main .top-title {
     font-weight: bold;
 }
 
-.box2 p {
+.about-box2 p {
     margin: 0; 
     padding: 0;
 }
 
-.box3 {
+.about-box3 {
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
@@ -109,7 +109,7 @@ main .top-title {
     border-radius: 8px;
 }
 
-.box3 .box-title {
+.about-box3 .box-title {
     position: absolute;
     display: inline-block;
     top: -13px;
@@ -122,7 +122,7 @@ main .top-title {
     font-weight: bold;
 }
 
-.box3 p {
+.about-box3 p {
     margin: 0; 
     padding: 0;
 }
@@ -148,7 +148,7 @@ main .top-title {
 
 .walk-title {
   font-family: 'Ubuntu', sans-serif;
-  width: 280px;
+  width: 380px;
   padding: 1rem 2rem;
   border-top: 3px solid #fdd35c;
   border-bottom: 3px solid #fdd35c;

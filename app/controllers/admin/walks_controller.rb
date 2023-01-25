@@ -16,8 +16,7 @@ class Admin::WalksController < ApplicationController
   def destroy
     @walk = Walk.find(params[:id])
     @walk.destroy
-    flash[:notice] = "投稿を削除しました"
+    flash[:alert] = "投稿を削除しました"
     redirect_to admin_walks_path
   end
-  
 end
