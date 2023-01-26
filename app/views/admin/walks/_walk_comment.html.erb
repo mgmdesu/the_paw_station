@@ -1,13 +1,11 @@
-<div class="row no-gutters rounded">
+<div class="row no-gutters">
   <div class="col-md-7 col-sm-10">
     <% walk.walk_comments.each do |walk_comment| %>
-      <div class="card w-75 mb-4">
+      <div class="walk-comment card w-75 mb-4">
         <div class="card-body">
           <p class="card-text">
-            <%= link_to user_path(walk_comment.user.id) do %>
-              <%= image_tag walk_comment.user.get_profile_image, size: '30x30', class: "rounded-circle" %>@
-              <%= walk_comment.user.name %>
-            <% end %>
+            <%= image_tag walk_comment.user.get_profile_image, size: '30x30', class: "rounded-circle" %>@
+            <%= walk_comment.user.name %>
           </p>
           <p class="card-text text-wrap"><%= walk_comment.walk_comment %></p>
           <p class="card-text">
@@ -18,6 +16,7 @@
           </p>
         </div>
       </div>
+      <hr>
     <% end %>
   </div>
 </div>
