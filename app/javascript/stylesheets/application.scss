@@ -17,42 +17,49 @@ header {
   font-size: 25px;
 }
 
+// doggies
 .nav-item1 {
   background-color: #f19ca7;
   border-radius: 25px;
   width: 16%;
 }
 
+// walk info
 .nav-item2 {
   background-color: #fdd35c;
   border-radius: 25px;
   width: 18%;
 }
 
+// meetup
 .nav-item3 {
   background-color: #79c06e;
   border-radius: 25px;
   width: 15%;
 }
 
+// admin/users
 .nav-item4 {
   background-color: #00afcc;
   border-radius: 25px;
   width: 15%;
 }
 
+// guest log-in
 .nav-item5 {
   background-color: #f19ca7;
   border-radius: 25px;
   width: 23%;
 }
 
+// admin/log-in
 .nav-item6 {
   background-color: #f19ca7;
   border-radius: 25px;
   width: 31%;
 }
 
+// admin/sign-up
 .nav-item7 {
   background-color: #79c06e;
   border-radius: 25px;
@@ -72,81 +79,81 @@ main .top-title {
 }
 
 .about-box1 {
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #fdd35c;
-    border-radius: 8px;
+  position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #fdd35c;
+  border-radius: 8px;
 }
 
 .about-box1 .box-title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #fcc800;
-    font-weight: bold;
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  color: #fcc800;
+  font-weight: bold;
 }
 
 .about-box1 p {
-    margin: 0; 
-    padding: 0;
+  margin: 0; 
+  padding: 0;
 }
 
 .about-box2 {
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #79c06e;
-    border-radius: 8px;
+  position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #79c06e;
+  border-radius: 8px;
 }
 
 .about-box2 .box-title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #79c06e;
-    font-weight: bold;
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  color: #79c06e;
+  font-weight: bold;
 }
 
 .about-box2 p {
-    margin: 0; 
-    padding: 0;
+  margin: 0; 
+  padding: 0;
 }
 
 .about-box3 {
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #f19ca7;
-    border-radius: 8px;
+  position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #f19ca7;
+  border-radius: 8px;
 }
 
 .about-box3 .box-title {
-    position: absolute;
-    display: inline-block;
-    top: -13px;
-    left: 10px;
-    padding: 0 9px;
-    line-height: 1;
-    font-size: 19px;
-    background: #FFF;
-    color: #f19ca7;
-    font-weight: bold;
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  color: #f19ca7;
+  font-weight: bold;
 }
 
 .about-box3 p {
-    margin: 0; 
-    padding: 0;
+  margin: 0; 
+  padding: 0;
 }
 
 .doggies-title {
@@ -158,10 +165,10 @@ main .top-title {
 }
 
 .doggies-detail {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    border: double 5px #f5b2b2;
-    border-radius: 8px;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #f5b2b2;
+  border-radius: 8px;
 }
 
 .doggies-comment {
