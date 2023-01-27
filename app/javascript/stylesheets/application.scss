@@ -68,6 +68,18 @@ header {
 
 main .top-title {
   font-family: 'Ubuntu', sans-serif;
+  width: auto;
+  padding: 1rem 2rem;
+  border-top: 3px solid #f39800;
+  border-bottom: 3px solid #f39800;
+}
+
+.top-new {
+  font-family: 'Ubuntu', sans-serif;
+  width: 250px;
+  padding: 1rem 2rem;
+  border-top: 3px solid #fdd35c;
+  border-bottom: 3px solid #fdd35c;
 }
 
 .about {
@@ -76,6 +88,10 @@ main .top-title {
   padding: 1rem 2rem;
   border-top: 3px solid #f39800;
   border-bottom: 3px solid #f39800;
+}
+
+.about-subtitle {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .about-box1 {
