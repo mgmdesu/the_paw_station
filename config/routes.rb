@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     
     resources :groups, except: [:destroy] do
       resource :group_users, only: [:create, :destroy]
+      resources :group_comments, only: [:create, :destroy]
     end
     
     get '/search' => 'searches#search'

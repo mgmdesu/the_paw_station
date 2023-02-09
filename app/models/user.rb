@@ -20,9 +20,10 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
-  #グループ
+  #グループ関連
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
+  has_many :group_comments, dependent: :destroy
   
   #フォロー機能
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -40,7 +41,7 @@ class User < ApplicationRecord
     relationships.find_by(followed_id: user.id).destroy
   end
   
-  #フォロー有無の
+  #フォロー有無
   def following?(user)
     followings.include?(user)
   end

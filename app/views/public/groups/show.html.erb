@@ -1,37 +1,43 @@
 <div class="container mt-5">
+  <h2 class="meetup-detail mb-5">Meetup Detail</h2>
   <div class="row">
-    <div class="col-md-7 col-sm-10 mx-auto">
-      <h2 class="meetup-detail mb-5">Meetup Detail</h2>
-        <div class="card">
-          <div class="card-header">
-            <strong>
-              <%= image_tag @group.get_group_image, size: '40x40', class: "rounded-circle" %>
-              <%= @group.group_name %>
-            </strong>
-          </div>
-          <div class="card-body">
-            <p class="card-text">開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></p>
-            <p class="card-text">開催場所：<%= @group.location %></p>
-            <p class="card-text"><%= safe_join(@group.explanation.split("\n"),tag(:br)) %></p>
-            <p class="card-text">主催者： @<%= @group.owner.name %></p>
-            <p class="card-text">参加予定メンバー：
-              <% @group.users.each do |user| %>
-                <li style="list-style: none;">@ <%= user.name %></li>
-              <% end %>
-            </p>
-            <p class="text-right">
-              <% if @group.is_owned_by?(current_user) %>
-                <%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-success" %>
-              <% elsif @group.includes_user?(current_user) %>
-                <%= link_to '退会する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to '参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success" %>
-              <% end %>
-            </p>
-          </div>
+    <div class="col-md-7 col-sm-10">
+      <div class="card">
+        <div class="card-header">
+          <strong>
+            <%= image_tag @group.get_group_image, size: '40x40', class: "rounded-circle" %>
+            <%= @group.group_name %>
+          </strong>
         </div>
+        <div class="card-body">
+          <p class="card-text">開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></p>
+          <p class="card-text">開催場所：<%= @group.location %></p>
+          <p class="card-text"><%= safe_join(@group.explanation.split("\n"),tag(:br)) %></p>
+          <p class="card-text">主催者： @<%= @group.owner.name %></p>
+          <p class="card-text">参加予定メンバー：
+            <% @group.users.each do |user| %>
+              <li style="list-style: none;">@ <%= user.name %></li>
+            <% end %>
+          </p>
+          <p class="text-right">
+            <% if @group.is_owned_by?(current_user) %>
+              <%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-success" %>
+            <% elsif @group.includes_user?(current_user) %>
+              <%= link_to '退会する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% else %>
+              <%= link_to '参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success" %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-10">
+      <h5>Comments（ <i class="far fa-comments"></i> <%= @group.group_comments.count %> ）</h5>
+      <%= render 'public/group_comments/group_comment', group: @group, group_comment: @group_comment %>
     </div>
   </div>
+
   <div class="row">
     <div class="mx-auto mt-5">
       <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', groups_path, class: "btn btn-default-v3" %>

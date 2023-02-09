@@ -1,0 +1,42 @@
+<div class="form-body p-4">
+  <% if user_signed_in? %>
+    <%= form_with model: [group, group_comment] do |f| %>
+      <div class="input-group mb-3 mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
+        </div>
+        <div class="ml-3"><%= f.text_area :group_comment, placeholder: 'コメントを書く', class: "form-control" %></div>
+      </div>
+      <div><%= f.submit 'コメント', class: 'btn btn-block btn-outline-success mt-7' %></div>
+    <% end %>
+  <% end %>
+</div>
+  
+<% group.group_comments.each do |group_comment| %>
+  <div class="walk-comment card mb-4">
+    <div class="card-body">
+      <p class="card-text">
+        <%= link_to user_path(group_comment.user.id) do %>
+          <%= image_tag group_comment.user.get_profile_image, size: '30x30', class: "rounded-circle" %> @
+          <%= group_comment.user.name %>
+        <% end %>
+      </p>
+      <p class="card-text"><%= safe_join(group_comment.group_comment.split("\n"),tag(:br)) %></p>
+      <p class="card-text">
+        <span class="mr-3">
+          <small class="text-muted">
+            <%= group_comment.created_at.strftime('%Y/%m/%d') %>
+          </small>
+        </span>
+        <span>
+          <% if group_comment.user == current_user %>
+            <%= link_to group_group_comment_path(group_comment.group, group_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
+              削除 <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </span>
+      </p>
+    </div>
+  </div>
+<% end %>
+<hr>

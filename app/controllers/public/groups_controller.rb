@@ -23,6 +23,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_comment = GroupComment.new
   end
 
   def edit
