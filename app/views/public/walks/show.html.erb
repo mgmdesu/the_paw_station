@@ -70,7 +70,7 @@
     
     <!--コメント/投稿・一覧-->
     <h5 class="mt-5">Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h5>
-      <%= render 'walk_comment', walk: @walk, walk_comment: @walk_comment %>
+      <%= render 'public/walk_comments/walk_comment', walk: @walk, walk_comment: @walk_comment %>
       
     <div class="text-center">
       <i class="fas fa-th-list"></i><%= link_to '一覧に戻る', walks_path, class: "btn btn-default-v3" %>
