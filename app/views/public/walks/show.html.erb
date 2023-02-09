@@ -21,7 +21,7 @@
               </tr>
               <tr>
                 <td></td>
-                <td class="text-wrap"><%= @walk.opinion %></td>
+                <td class="text-wrap"><%= safe_join(@walk.opinion.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <td><i class="fas fa-map-marker-alt"></i></td>
