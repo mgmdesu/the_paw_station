@@ -1,8 +1,8 @@
 <div class="row no-gutters">
-  <div class="col-md-4 col-sm-10">
+  <div class="comment-area col-md-4 col-sm-10">
     <div class="form-body p-4">
       <% if user_signed_in? %>
-        <%= form_with model: [walk, walk_comment] do |f| %>
+        <%= form_with model: [walk, walk_comment], local: false do |f| %>
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
@@ -35,7 +35,7 @@
             </span>
             <span>
               <% if walk_comment.user == current_user %>
-                <%= link_to walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
+                <%= link_to walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true, class: "btn btn-sm btn-outline-danger text-right" do %>
                   削除 <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>

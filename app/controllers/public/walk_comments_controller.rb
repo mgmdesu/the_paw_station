@@ -1,16 +1,17 @@
 class Public::WalkCommentsController < ApplicationController
   
   def create
-    walk = Walk.find(params[:walk_id])
-    comment = current_user.walk_comments.new(walk_comment_params)
-    comment.walk_id = walk.id
-    comment.save
-    redirect_to walk_path(walk.id)
+    @walk = Walk.find(params[:walk_id])
+    @walk_comment = WalkComment.new(walk_comment_params)
+    @walk_comment.walk_id = @walk.id
+    @walk_comment.user_id = current_user.id
+    @walk_comment.save
   end 
   
   def destroy
-    WalkComment.find(params[:id]).destroy
-    redirect_to walk_path(params[:walk_id])
+    @walk = Walk.find(params[:walk_id])
+    @walk_comment = WalkComment.find(params[:id])
+    @walk_comment.destroy
   end 
   
   private

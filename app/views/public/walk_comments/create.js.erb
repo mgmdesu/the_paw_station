@@ -1,0 +1,3 @@
+$(".comment-counter").html("<%= j(render 'public/walk_comments/counter', walk: @walk) %>");
+$(".walk-comments").html("<%= j(render 'public/walk_comments/walk_comment', walk: @walk, walk_comment: @walk_comment) %>");
+$(".comment-area").val("");
