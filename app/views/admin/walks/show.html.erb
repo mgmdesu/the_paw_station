@@ -43,13 +43,18 @@
         </table>
         
         <div class="text-right pb-3">
-          <%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-danger" %>
+          <%= link_to '削除', admin_walk_path, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
         </div>
     </div>
   </div>
   
-  <h5 class="my-5">Comments（ <i class="far fa-comments"></i> <%= @walk.walk_comments.count %> ）</h5>
-    <%= render 'walk_comment', walk: @walk, walk_comment: @walk_comment %>
+    <!--コメント-->
+    <div class="comment-counter">
+      <%= render 'public/walk_comments/counter', walk: @walk %>
+    </div>
+    <div class="walk-comments">
+      <%= render 'admin/walk_comments/walk_comment', walk: @walk, walk_comment: @walk_comment %>
+    </div>
     
   <div class="text-center">
     <i class="fas fa-th-list"></i><%= link_to '一覧に戻る', admin_walks_path, class: "btn btn-default-v3" %>

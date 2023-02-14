@@ -2,7 +2,8 @@ class Admin::WalkCommentsController < ApplicationController
   before_action :authenticate_admin!
   
   def destroy
-    WalkComment.find(params[:id]).destroy
-    redirect_to admin_walk_path(params[:walk_id])
+    @walk = Walk.find(params[:walk_id])
+    @walk_comment = WalkComment.find(params[:id])
+    @walk_comment.destroy
   end 
 end

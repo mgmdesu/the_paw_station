@@ -12,7 +12,7 @@
             <small class="text-muted">
               <%= walk_comment.created_at.strftime('%Y/%m/%d') %>
             </small>
-            <%= link_to '削除', admin_walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" %>
+            <%= link_to '削除', admin_walk_walk_comment_path(walk_comment.walk, walk_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true, class: "btn btn-sm btn-outline-danger text-right" %>
           </p>
         </div>
       </div>
