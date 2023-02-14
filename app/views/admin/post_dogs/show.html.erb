@@ -29,8 +29,13 @@
       </div>
     </div>
 
-    <h5 class="my-5">Comments（ <i class="far fa-comments"></i> <%= @post_dog.post_comments.count %> ）</h5>
-    <%= render 'dog_comment', post_dog: @post_dog, post_comment: @post_comment %>
+    <!--コメント/投稿・一覧-->
+    <div class="comment-counter">
+      <%= render 'public/post_comments/counter', post_dog: @post_dog %>
+    </div>
+    <div class="post_comments">
+      <%= render 'admin/post_comments/dog_comment', post_dog: @post_dog, post_comment: @post_comment %>
+    </div>
       
     <div class="text-center">
       <i class="fas fa-th-list"></i><%= link_to '一覧へ戻る', admin_post_dogs_path, class: "btn btn-default-v3" %>
