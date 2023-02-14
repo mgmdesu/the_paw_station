@@ -1,0 +1,3 @@
+$(".comment-counter").html("<%= j(render 'public/group_comments/counter', group: @group) %>");
+$(".group-comments").html("<%= j(render 'public/group_comments/group_comment', group: @group, group_comment: @group_comment) %>");
+$(".comment-area").val("");

@@ -1,6 +1,6 @@
-<div class="form-body p-4">
+<div class="comment-area form-body p-4">
   <% if user_signed_in? %>
-    <%= form_with model: [group, group_comment] do |f| %>
+    <%= form_with model: [group, group_comment], local: false do |f| %>
       <div class="input-group mb-3 mt-2">
         <div class="input-group-prepend">
           <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
@@ -30,7 +30,7 @@
         </span>
         <span>
           <% if group_comment.user == current_user %>
-            <%= link_to group_group_comment_path(group_comment.group, group_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger text-right" do %>
+            <%= link_to group_group_comment_path(group_comment.group, group_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true, class: "btn btn-sm btn-outline-danger text-right" do %>
               削除 <i class="fas fa-trash-alt"></i>
             <% end %>
           <% end %>

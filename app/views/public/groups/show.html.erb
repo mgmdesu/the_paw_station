@@ -33,8 +33,8 @@
     </div>
 
     <div class="col-md-4 col-sm-10">
-      <h5>Comments（ <i class="far fa-comments"></i> <%= @group.group_comments.count %> ）</h5>
-      <%= render 'public/group_comments/group_comment', group: @group, group_comment: @group_comment %>
+      <div class="comment-counter"><%= render 'public/group_comments/counter', group: @group %></div>
+      <div class="group-comments"><%= render 'public/group_comments/group_comment', group: @group, group_comment: @group_comment %></div>
     </div>
   </div>
 
