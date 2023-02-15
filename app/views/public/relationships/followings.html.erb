@@ -6,7 +6,7 @@
         <% if @users.exists? %>
           <%= render 'public/users/relationships', users: @users %>
         <% else %>
-          <p class="mt-5">フォローしているユーザーはいません</p>
+          <p class="mt-5">フォローしているユーザーは現在いません</p>
         <% end %>
     </div>
   </div>
