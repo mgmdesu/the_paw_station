@@ -10,25 +10,14 @@
           </strong>
         </div>
         <div class="card-body">
-          <p class="card-text">・ 開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></p>
-          <p class="card-text">・ 開催場所：<%= @group.location %></p>
-          <p class="card-text">・ イベントの詳細や注意事項など：</p>
-          <p class="card-text"><%= safe_join(@group.explanation.split("\n"),tag(:br)) %></p>
-          <p class="card-text">・ 主催者： @<%= @group.owner.name %></p>
-          <p class="card-text">・ 参加予定メンバー：
-            <% @group.users.each do |user| %>
-              <li style="list-style: none;">@ <%= user.name %></li>
-            <% end %>
-          </p>
-          <p class="text-right">
-            <% if @group.is_owned_by?(current_user) %>
-              <%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-success" %>
-            <% elsif @group.includes_user?(current_user) %>
-              <%= link_to 'Leave', group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
-            <% else %>
-              <%= link_to 'Join', group_group_users_path(@group), method: :post, class: "btn btn-outline-success" %>
-            <% end %>
-          </p>
+          <div class="card-text">・ 開催日時：<%= @group.event_date.strftime("%Y年%m月%d日") %> <%= @group.start_at.strftime("%H時%M分") %></div></br>
+          <div class="card-text">・ 開催場所：<%= @group.location %></div></br>
+          <div class="card-text">・ イベントの詳細や注意事項など：</div>
+          <div class="card-text"><%= safe_join(@group.explanation.split("\n"),tag(:br)) %></div></br>
+          <div class="card-text">・ 主催者： @<%= @group.owner.name %></div></br>
+          <div class="card-text">・ 参加予定メンバー：</div>
+          <div id="members_count_list"><%= render 'member', group: @group %></div>
+          <div id="join_btn", class="text-right"><%= render 'btn', group: @group %></div>
         </div>
       </div>
     </div>
