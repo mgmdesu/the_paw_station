@@ -1,11 +1,11 @@
-<div class="comment-area form-body p-4">
+<div class="form-body p-4">
   <% if user_signed_in? %>
     <%= form_with model: [group, group_comment], local: false do |f| %>
       <div class="input-group mb-3 mt-2">
         <div class="input-group-prepend">
           <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
         </div>
-        <div class="ml-3"><%= f.text_area :group_comment, placeholder: 'コメントを書く', class: "form-control" %></div>
+        <div class="ml-3"><%= f.text_area :group_comment, placeholder: 'コメントを書く', class: "comment-area form-control" %></div>
       </div>
       <div><%= f.submit 'コメント', class: 'btn btn-block btn-outline-success mt-7' %></div>
     <% end %>

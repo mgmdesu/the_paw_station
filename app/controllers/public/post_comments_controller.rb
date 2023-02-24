@@ -6,12 +6,14 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.post_dog_id = @post_dog.id
     @post_comment.user_id = current_user.id
     @post_comment.save
+    @post_comment = PostComment.new
   end 
   
   def destroy
     @post_dog = PostDog.find(params[:post_dog_id])
     @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
+    @post_comment = PostComment.new
   end 
   
   private

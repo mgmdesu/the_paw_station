@@ -6,12 +6,14 @@ class Public::WalkCommentsController < ApplicationController
     @walk_comment.walk_id = @walk.id
     @walk_comment.user_id = current_user.id
     @walk_comment.save
+    @walk_comment = WalkComment.new
   end 
   
   def destroy
     @walk = Walk.find(params[:walk_id])
     @walk_comment = WalkComment.find(params[:id])
     @walk_comment.destroy
+    @walk_comment = WalkComment.new
   end 
   
   private

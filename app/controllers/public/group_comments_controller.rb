@@ -6,12 +6,14 @@ class Public::GroupCommentsController < ApplicationController
     @group_comment.group_id = @group.id
     @group_comment.user_id = current_user.id
     @group_comment.save
+    @group_comment = GroupComment.new
   end 
   
   def destroy
     @group = Group.find(params[:group_id])
     @group_comment = GroupComment.find(params[:id])
     @group_comment.destroy
+    @group_comment = GroupComment.new
   end
   
   private

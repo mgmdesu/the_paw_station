@@ -1,12 +1,12 @@
 <div class="row no-gutters">
-  <div class="comment-area col-md-4 col-sm-10">
+  <div class="col-md-4 col-sm-10">
     <div class="form-body p-4">
       <%= form_with model: [post_dog, post_comment], local: false do |f| %>
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
             <span class="input-group-text rounded" aria-hidden="true"><i class="fas fa-comments"></i></span>
           </div>
-          <div class="ml-3"><%= f.text_area :dog_comment, placeholder: 'コメントを書く', class: "form-control" %></div>
+          <div class="ml-3"><%= f.text_area :dog_comment, placeholder: 'コメントを書く', class: "comment-area form-control" %></div>
         </div>
         <hr>
         <div><%= f.submit 'コメント', row: "4", class: "btn btn-block btn-outline-warning mt-7" %></div>
