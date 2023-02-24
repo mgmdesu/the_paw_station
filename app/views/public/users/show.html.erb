@@ -16,7 +16,7 @@
           <% if post_dog.user.is_deleted == false %>
             <div class="col-sm-1 mb-5">
               <div class="card-img h-100 mt-4 shadow-sm">
-                <%= image_tag post_dog.get_post_dog_image, class: "card-img-top img-fluid", style: "height:200px" %>
+                <%= image_tag post_dog.get_post_dog_image, class: "card-img-top img-fluid", style: "height:200px; object-fit: cover;" %>
                 <div class="card-body">
                   <p class="card-text">
                     <%= image_tag post_dog.user.get_profile_image, size: '40x40', class: "rounded-circle" %> @
