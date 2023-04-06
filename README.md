@@ -1,5 +1,5 @@
 # <img width="277" alt="スクリーンショット 2023-01-27 16 59 40" src="https://user-images.githubusercontent.com/115972724/215237448-974e5a3d-e329-4b38-be44-1690a5e6ae56.png">
-
+※現在未稼働(2023/04/06〜）
 
 ## サイト概要
 
